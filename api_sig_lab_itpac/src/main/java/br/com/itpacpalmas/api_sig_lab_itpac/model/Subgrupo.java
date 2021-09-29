@@ -1,14 +1,19 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 
-@Entity
+@Entity(name="subgrupo")
 public class Subgrupo {
 
 	// ---------- Atributos
@@ -27,6 +32,11 @@ public class Subgrupo {
 	@OneToOne
 	@JoinColumn(name = "disciplina_id", referencedColumnName = "id")
 	private Disciplina disciplina;
+	@ManyToMany
+	@JoinTable(name="PROJETO_FUNCIONARIO",
+	        joinColumns={@JoinColumn(name="PROJETO_ID")},
+	        inverseJoinColumns={@JoinColumn(name="FUNCIONARIO_ID")})
+	private List<Aluno> alunos;
 
 	// ---------- Getters e Setters
 	
@@ -36,6 +46,14 @@ public class Subgrupo {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	public String getNome() {

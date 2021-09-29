@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.GenerationType;
 
-@Entity
+@Entity(name="diciplina")
 public class Disciplina {
 
     @Id
