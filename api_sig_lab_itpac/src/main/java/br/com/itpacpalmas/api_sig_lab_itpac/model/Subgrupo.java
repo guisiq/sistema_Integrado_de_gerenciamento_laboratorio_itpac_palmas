@@ -11,7 +11,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
 
 @Entity(name="subgrupo")
 public class Subgrupo {
@@ -33,9 +32,9 @@ public class Subgrupo {
 	@JoinColumn(name = "disciplina_id", referencedColumnName = "id")
 	private Disciplina disciplina;
 	@ManyToMany
-	@JoinTable(name="PROJETO_FUNCIONARIO",
-	        joinColumns={@JoinColumn(name="PROJETO_ID")},
-	        inverseJoinColumns={@JoinColumn(name="FUNCIONARIO_ID")})
+	@JoinTable(name="aluno_subgrupo",
+	        joinColumns={@JoinColumn(name="aluno")},
+	        inverseJoinColumns={@JoinColumn(name="subgrupo")})
 	private List<Aluno> alunos;
 
 	// ---------- Getters e Setters

@@ -17,6 +17,7 @@ public class percistenciaPi {
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		Periodo periodo = new Periodo();
+
 		List<Disciplina> materias = new ArrayList<Disciplina>();
 		List<Subgrupo> subgrupos = new ArrayList<Subgrupo>();
 		List<String[]> tabela = new ArrayList<String[]>();
@@ -85,8 +86,10 @@ public class percistenciaPi {
 				alunosSubgrupo = new ArrayList<Aluno>();
 				subgrupo.setAlunos(alunosSubgrupo);
 				subgrupo.setDisciplina(materia);
+				subgrupos.add(subgrupo);
 			}
 		}
+		
 		System.out.println("teste");
 	}
 

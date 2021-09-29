@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity(name="aula")
 public class Aula{
@@ -18,7 +19,19 @@ public class Aula{
     @Column(nullable = false, name = "horas_aprendizagem")
     private Double horas_aprendizagem;
     private Agendamento agendamento;
-   
+    private List<Aluno> alunosPresentes;
+
+    
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public List<Aluno> getAlunosPresentes() {
+        return alunosPresentes;
+    }
+    public void setAlunosPresentes(List<Aluno> alunosPresentes) {
+        this.alunosPresentes = alunosPresentes;
+    }
     public Agendamento getAgendamento() {
         return agendamento;
     }
