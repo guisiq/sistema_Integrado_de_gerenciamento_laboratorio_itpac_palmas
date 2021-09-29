@@ -1,14 +1,25 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.models;
+package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario{
-    private Integer idUsuario;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable = false, name = "senha")
     private String senha;
+    @Column(nullable = false, name = "login")
     private String login;
     private PerfilUser perfil_user;
     private Pessoa pessoa;
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getId() {
+        return id;
     }
     public Pessoa getPessoa() {
         return pessoa;
@@ -22,8 +33,8 @@ public class Usuario{
     public void setPerfil_user(PerfilUser perfil_user) {
         this.perfil_user = perfil_user;
     }
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(Integer id) {
+        this.id = id;
     }
     public String getSenha() {
         return senha;

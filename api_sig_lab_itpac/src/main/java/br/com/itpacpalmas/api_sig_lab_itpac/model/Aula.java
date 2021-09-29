@@ -1,9 +1,21 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.models;
+package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Aula{
-    private Integer idAula;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable = false, name = "codigo")
     private String codigo;
+    @Column(nullable = false, name = "nome_atividade")
     private String nome_atividade;
+    @Column(nullable = false, name = "horas_aprendizagem")
     private Double horas_aprendizagem;
     private Agendamento agendamento;
    
@@ -16,11 +28,11 @@ public class Aula{
     public Double getHoras_aprendizagem() {
         return horas_aprendizagem;
     }
-    public Integer getIdAula() {
-        return idAula;
+    public Integer getId() {
+        return id;
     }
-    public void setIdAula(Integer idAula) {
-        this.idAula = idAula;
+    public void setIdAula(Integer id) {
+        this.id = id;
     }
     public String getCodigo() {
         return codigo;

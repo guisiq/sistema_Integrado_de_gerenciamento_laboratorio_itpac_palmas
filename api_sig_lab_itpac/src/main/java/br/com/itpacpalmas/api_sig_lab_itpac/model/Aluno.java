@@ -10,7 +10,7 @@ public class Aluno {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
-	private Pesoa pesoa ;
+	private Pessoa pessoa ;
 	private String matricula ;
 	
 	public Integer getId() {
@@ -19,11 +19,11 @@ public class Aluno {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Pesoa getPesoa() {
-		return pesoa;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
-	public void setPesoa(Pesoa pesoa) {
-		this.pesoa = pesoa;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 	public String getMatricula() {
 		return matricula;
