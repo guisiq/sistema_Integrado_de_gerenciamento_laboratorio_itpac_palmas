@@ -5,17 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity(name="usuario")
 public class Usuario{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false, name = "senha")
+    @Column( name = "senha")
     private String senha;
-    @Column(nullable = false, name = "login")
+    @Column( name = "login")
     private String login;
-    private PerfilUser perfil_user;
+    @OneToMany
+    @JoinColumn(name ="perfil_user")
+    private PerfilUser perfilUser;
     private Pessoa pessoa;
 
     public Integer getId() {
@@ -28,10 +32,10 @@ public class Usuario{
         this.pessoa = pessoa;
     }
     public PerfilUser getPerfil_user() {
-        return perfil_user;
+        return perfilUser;
     }
     public void setPerfil_user(PerfilUser perfil_user) {
-        this.perfil_user = perfil_user;
+        this.perfilUser = perfil_user;
     }
     public void setIdUsuario(Integer id) {
         this.id = id;

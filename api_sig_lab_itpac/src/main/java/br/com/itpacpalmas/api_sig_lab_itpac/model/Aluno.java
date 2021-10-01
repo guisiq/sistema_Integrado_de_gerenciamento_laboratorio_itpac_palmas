@@ -1,15 +1,20 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 @Entity(name="aluno")
 public class Aluno {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
+	@OneToOne
+    @JoinColumn(name = "pessoa")
 	private Pessoa pessoa ;
 	private String matricula ;
 	

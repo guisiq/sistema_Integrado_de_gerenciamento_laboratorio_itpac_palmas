@@ -11,12 +11,9 @@ public class Manual {
 
     @Id
     @GeneratedValue(strategy  = GenerationType.IDENTITY)
+    @Column(name = "idmanual")
     private Integer id;
-
-    @Column(nullable = false, length = 200)
     private String descricao;
-
-    @Column(nullable = false, length = 200)
     private String documento;
 
 

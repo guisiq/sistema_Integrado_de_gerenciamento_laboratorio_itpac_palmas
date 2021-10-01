@@ -1,5 +1,6 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idpessoa")
 	private Integer id ;
 	private String nome ;
 	private String cpf;

@@ -4,15 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name="presenca")
 public class Presenca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idpresenca;
 	private boolean presente;
-//	private Aula aula;
-//	private Aluno aluno;
+	@OneToOne
+	@JoinColumn(name ="aula")
+	private Aula aula;
+	@JoinColumn(name ="aluno")
+	private Aluno aluno;
 	
 	public int getIdpresenca() {
 		return idpresenca;
@@ -26,18 +31,7 @@ public class Presenca {
 	public void setPresente(boolean presente) {
 		this.presente = presente;
 	}
-//	public Aula getAula() {
-//		return aula;
-//	}
-//	public void setAula(Aula aula) {
-//		this.aula = aula;
-//	}
-//	public Aluno getAluno() {
-//		return aluno;
-//	}
-//	public void setAluno(Aluno aluno) {
-//		this.aluno = aluno;
-//	}
+
 	
 	
 	

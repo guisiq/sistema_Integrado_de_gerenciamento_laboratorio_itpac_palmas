@@ -1,9 +1,12 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.GenerationType;
 
 @Entity(name="diciplina")
@@ -11,12 +14,22 @@ public class Disciplina {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "iddiciplina")
     private Integer id;
     private String nome;
     private String apelido;
-    private Integer periodo;
+    @OneToMany
+    @JoinColumn(name = "periodo")
+    private Periodo periodo;
     private Boolean ativo;
     
+    
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
     public Integer getId() {
         return id;
     }
@@ -26,12 +39,7 @@ public class Disciplina {
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
-    public Integer getPeriodo() {
-        return periodo;
-    }
-    public void setPeriodo(Integer periodo) {
-        this.periodo = periodo;
-    }
+    
     public String getApelido() {
         return apelido;
     }

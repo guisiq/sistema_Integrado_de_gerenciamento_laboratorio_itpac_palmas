@@ -6,13 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="Permissao")
 public class Permissao {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpermissao")
-    private Long idPermissao;
+    private Long id;
     private String nome;
 
     
@@ -21,14 +21,14 @@ public class Permissao {
     }
     
     public Permissao(Long idPermissao, String nome) {
-        this.idPermissao = idPermissao;
+        this.id = idPermissao;
         this.nome = nome;
     }
     public Long getIdPermissao() {
-        return idPermissao;
+        return id;
     }
     public void setIdPermissao(Long idPermissao) {
-        this.idPermissao = idPermissao;
+        this.id = idPermissao;
     }
     public String getNome() {
         return nome;

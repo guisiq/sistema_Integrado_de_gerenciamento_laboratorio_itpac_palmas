@@ -3,6 +3,8 @@ package br.com.itpacpalmas.api_sig_lab_itpac.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.GenerationType;
 
 
@@ -12,6 +14,8 @@ public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @OneToOne
+    @JoinColumn(name = "pessoa")
     private Pessoa pessoa;
     private boolean ativo;
     private String matricula;
