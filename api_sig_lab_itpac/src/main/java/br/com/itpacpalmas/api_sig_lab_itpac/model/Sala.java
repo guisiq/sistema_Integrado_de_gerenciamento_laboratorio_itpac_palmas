@@ -10,20 +10,12 @@ import javax.persistence.Id;
 public class Sala {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idsala")
     private Integer id;
-
-    @Column(nullable = false, length = 60)
     private String nome;
-
-    @Column( length = 100)
     private String local;
-
     private Integer capacidade;
-
-    @Column (length = 300)
     private String descricao;
-
-    @Column(nullable = false)
     private boolean ativo = true;
 
    

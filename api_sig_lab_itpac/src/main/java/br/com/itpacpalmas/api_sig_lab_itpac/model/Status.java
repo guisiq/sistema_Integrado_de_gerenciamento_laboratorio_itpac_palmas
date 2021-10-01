@@ -1,28 +1,20 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="status")
 public class Status {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idstatus;
-	private Long id;
+    @Column(name ="idstatus")
+    private Long id;
 
     private String descricao;
-     
-
-    public Long getIdstatus() {
-        return idstatus;
-    }
-
-    public void setIdstatus(Long idstatus) {
-        this.idstatus = idstatus;
-    }
 
     public Status(Long id, String descricao) {
         this.id = id;

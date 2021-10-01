@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import java.util.List;
 
 @Entity(name="aula")
@@ -15,36 +18,19 @@ public class Aula{
     @Column(nullable = false, name = "codigo")
     private String codigo;
     @Column(nullable = false, name = "nome_atividade")
-    private String nome_atividade;
+    private String nomeAtividade;
     @Column(nullable = false, name = "horas_aprendizagem")
-    private Double horas_aprendizagem;
+    private Double horasAprendizagem;
+    @ManyToOne
+    @JoinColumn(name = "Agendamento")
+    
     private Agendamento agendamento;
     private List<Aluno> alunosPresentes;
-
     
-    
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public List<Aluno> getAlunosPresentes() {
-        return alunosPresentes;
-    }
-    public void setAlunosPresentes(List<Aluno> alunosPresentes) {
-        this.alunosPresentes = alunosPresentes;
-    }
-    public Agendamento getAgendamento() {
-        return agendamento;
-    }
-    public void setAgendamento(Agendamento agendamento) {
-        this.agendamento = agendamento;
-    }
-    public Double getHoras_aprendizagem() {
-        return horas_aprendizagem;
-    }
     public Integer getId() {
         return id;
     }
-    public void setIdAula(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getCodigo() {
@@ -53,13 +39,32 @@ public class Aula{
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    public String getNome_atividade() {
-        return nome_atividade;
+    public String getNomeAtividade() {
+        return nomeAtividade;
     }
-    public void setNome_atividade(String nome_atividade) {
-        this.nome_atividade = nome_atividade;
+    public void setNomeAtividade(String nomeAtividade) {
+        this.nomeAtividade = nomeAtividade;
     }
-    public void setHoras_aprendizagem(Double horas_aprendizagem) {
-        this.horas_aprendizagem = horas_aprendizagem;
+    public Double getHorasAprendizagem() {
+        return horasAprendizagem;
     }
+    public void setHorasAprendizagem(Double horasAprendizagem) {
+        this.horasAprendizagem = horasAprendizagem;
+    }
+    public Agendamento getAgendamento() {
+        return agendamento;
+    }
+    public void setAgendamento(Agendamento agendamento) {
+        this.agendamento = agendamento;
+    }
+    public List<Aluno> getAlunosPresentes() {
+        return alunosPresentes;
+    }
+    public void setAlunosPresentes(List<Aluno> alunosPresentes) {
+        this.alunosPresentes = alunosPresentes;
+    }
+
+    
+    
+    
 }

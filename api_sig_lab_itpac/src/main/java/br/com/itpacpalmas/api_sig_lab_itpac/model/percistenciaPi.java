@@ -9,12 +9,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+
+import br.com.itpacpalmas.api_sig_lab_itpac.repository.*;
 import br.com.itpacpalmas.api_sig_lab_itpac.model.Aluno;
 import br.com.itpacpalmas.api_sig_lab_itpac.model.Subgrupo;
 
+@Service
 public class percistenciaPi {
-
-	public static void main(String[] args) throws FileNotFoundException {
+	@Autowired
+	static SubgrupoRepository sRepository;
+	@Bean
+	public void persistir() throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		Periodo periodo = new Periodo();
 
@@ -89,7 +97,8 @@ public class percistenciaPi {
 				subgrupos.add(subgrupo);
 			}
 		}
-		
+		List<Subgrupo> save = sRepository.saveAll(subgrupos);
+
 		System.out.println("teste");
 	}
 
