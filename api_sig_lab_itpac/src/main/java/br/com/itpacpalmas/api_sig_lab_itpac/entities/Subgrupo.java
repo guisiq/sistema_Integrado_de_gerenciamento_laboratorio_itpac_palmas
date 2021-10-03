@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.model;
+package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -25,14 +26,15 @@ public class Subgrupo {
 	
 	@Column(nullable = false, length = 60)
 	private String nome;
-	
+	/*
 	@OneToMany
 	@JoinColumn(name = "professor_id", referencedColumnName = "id")
 	private Professor professor;
-	
-	@OneToMany
+	*/
+	@ManyToOne
 	@JoinColumn(name = "disciplina_id", referencedColumnName = "id")
 	private Disciplina disciplina;
+
 	@ManyToMany(cascade = { CascadeType.PERSIST})
 	@JoinTable(name="aluno_subgrupo",
 	        joinColumns={@JoinColumn(name="aluno")},
@@ -64,7 +66,7 @@ public class Subgrupo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+/*
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -72,7 +74,7 @@ public class Subgrupo {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-
+*/
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}

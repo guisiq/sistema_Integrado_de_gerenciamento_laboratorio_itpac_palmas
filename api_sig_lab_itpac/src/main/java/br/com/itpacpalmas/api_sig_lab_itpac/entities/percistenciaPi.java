@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.model;
+package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 
 
@@ -13,14 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Aluno;
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Subgrupo;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.*;
-import br.com.itpacpalmas.api_sig_lab_itpac.model.Aluno;
-import br.com.itpacpalmas.api_sig_lab_itpac.model.Subgrupo;
 
 @Service
 public class percistenciaPi {
 	@Autowired
-	static SubgrupoRepository sRepository;
+	public SubgrupoRepository sRepository;
 	@Bean
 	public void persistir() throws FileNotFoundException {
 		// TODO Auto-generated method stub

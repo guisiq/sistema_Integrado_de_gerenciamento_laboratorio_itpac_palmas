@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.model;
+package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 import java.time.LocalDate;
 
@@ -12,18 +12,17 @@ import javax.persistence.Id;
 public class Periodo {
 
 	// ---------- Atributos
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(nullable = false, length = 6)
+	@Column
 	private String periodo;
 	
-	@Column(nullable = false, name = "data_cadastro")
+	@Column
 	private LocalDate dataCadastro;
 	
-	@Column(nullable = false)
+	@Column
 	private Boolean ativo;
 
 	// ---------- Getters e Setters

@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.model;
+package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 
 import javax.persistence.Column;
@@ -6,7 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.GenerationType;
 
 @Entity(name="diciplina")
@@ -18,7 +22,7 @@ public class Disciplina {
     private Integer id;
     private String nome;
     private String apelido;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "periodo")
     private Periodo periodo;
     private Boolean ativo;

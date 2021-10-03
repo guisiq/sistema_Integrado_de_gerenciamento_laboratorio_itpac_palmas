@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import br.com.itpacpalmas.api_sig_lab_itpac.model.Presenca;
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Presenca;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.PresencaRepository;
 
 
