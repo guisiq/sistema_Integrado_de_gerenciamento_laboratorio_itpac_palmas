@@ -20,11 +20,13 @@ public class Disciplina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iddiciplina")
     private Integer id;
-    private String nome;
-    private String apelido;
+        
     @ManyToOne
     @JoinColumn(name = "periodo")
     private Periodo periodo;
+
+    private String nome;
+    private String apelido;
     private Boolean ativo;
     
     

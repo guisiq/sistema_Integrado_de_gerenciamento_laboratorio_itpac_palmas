@@ -1,6 +1,7 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ public class Aluno {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
-	@OneToOne
+	@OneToOne(cascade = { CascadeType.ALL})
     @JoinColumn(name = "pessoa")
 	private Pessoa pessoa ;
 	private String matricula ;
