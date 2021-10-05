@@ -18,7 +18,14 @@ public class Aluno {
     @JoinColumn(name = "pessoa")
 	private Pessoa pessoa ;
 	private String matricula ;
+	private boolean Ativo ;
 	
+	public boolean isAtivo() {
+		return Ativo;
+	}
+	public void setAtivo(boolean ativo) {
+		Ativo = ativo;
+	}
 	public Integer getId() {
 		return id;
 	}
