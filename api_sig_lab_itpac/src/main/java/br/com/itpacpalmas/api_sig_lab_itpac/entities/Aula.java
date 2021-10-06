@@ -7,8 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import java.util.List;
 
@@ -26,9 +26,11 @@ public class Aula{
     @ManyToOne
     @JoinColumn(name = "Agendamento")
     private Agendamento agendamento;
-    // @OneToMany
-    // @JoinTable
-    // private List<Aluno> alunosPresentes;
+    @OneToMany
+    @JoinTable(name="presenca",
+        joinColumns={@JoinColumn(name="aula")},
+        inverseJoinColumns={@JoinColumn(name="aluno")})
+    private List<Aluno> alunosPresentes;
     
     public Integer getId() {
         return id;
