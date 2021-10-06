@@ -14,16 +14,17 @@ public class Periodo {
 	// ---------- Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idperiodo")
 	private Integer id;
 	
 	@Column
 	private String periodo;
 	
-	@Column
+	@Column(name = "data_cadastro")
 	private LocalDate dataCadastro;
 	
 	@Column
-	private Boolean ativo;
+	private Boolean ativo = true;
 
 	// ---------- Getters e Setters
 	
