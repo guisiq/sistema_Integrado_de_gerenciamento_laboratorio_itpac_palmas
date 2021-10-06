@@ -27,14 +27,14 @@ public class ManualController {
     @Autowired
 	private FileStorageService servises;
     
-    @GetMapping("")
-    public  List<ManualResponseVO> getInfo() {
-        return servises.buscarTodosInfo();
+    @GetMapping()
+    public  ResponseEntity<List<ManualResponseVO>> getInfo() {
+        return ResponseEntity.ok().body(servises.buscarTodosInfo());
     }
     
     @GetMapping("{id}")
-    public ManualResponseVO getInfoById(@PathVariable int id) {
-        return servises.buscarbyIdInfo(id );
+    public ResponseEntity<ManualResponseVO> getInfoById(@PathVariable int id) {
+        return ResponseEntity.ok().body(servises.buscarbyIdInfo(id));
     }
     
     @GetMapping("/doc/{id}")

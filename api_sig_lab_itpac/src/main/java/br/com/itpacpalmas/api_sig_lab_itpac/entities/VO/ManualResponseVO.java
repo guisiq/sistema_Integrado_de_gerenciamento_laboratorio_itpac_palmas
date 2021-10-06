@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.itpacpalmas.api_sig_lab_itpac.Services.FileStorageService;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Manual;
 @Component
 public class ManualResponseVO implements Serializable{
