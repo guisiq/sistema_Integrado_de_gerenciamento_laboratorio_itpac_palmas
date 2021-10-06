@@ -1,32 +1,24 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.controller;
 
-import java.io.File;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.Services.FileStorageService;
-import br.com.itpacpalmas.api_sig_lab_itpac.entities.Manual;
-import br.com.itpacpalmas.api_sig_lab_itpac.entities.PerfilUser;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ManualResponseVO;
-//import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ManualInfo;
-import br.com.itpacpalmas.api_sig_lab_itpac.repository.PerfilUserRepository;
+
 
 // https://www.youtube.com/watch?v=DtC_KfU6b1o
 @RestController

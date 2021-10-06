@@ -2,7 +2,6 @@ package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
