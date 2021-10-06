@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import br.com.itpacpalmas.api_sig_lab_itpac.entities.Aluno;
-import br.com.itpacpalmas.api_sig_lab_itpac.entities.Subgrupo;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.*;
 
 @Service
