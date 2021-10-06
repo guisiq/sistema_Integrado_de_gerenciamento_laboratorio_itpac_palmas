@@ -4,7 +4,8 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Disciplina;
@@ -24,7 +25,6 @@ public class DisciplinaService {
     public Disciplina insert (Disciplina obj){
         obj.setId(null);
         return repo.save(obj);
-        
     }
 
     public Disciplina update (Disciplina obj){
@@ -34,6 +34,17 @@ public class DisciplinaService {
 
     public List<Disciplina> findAll(){
         return repo.findAll();
+    }
+    public ResponseEntity<Disciplina> disable(Integer id){
+        try{
+            Disciplina disciplina = repo.findById(id).get();
+			disciplina.setAtivo(false);
+			repo.save(disciplina);
+			return ResponseEntity.status(HttpStatus.OK).body(disciplina);
+		}catch(Exception e){
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	    }
     }
 }
 
