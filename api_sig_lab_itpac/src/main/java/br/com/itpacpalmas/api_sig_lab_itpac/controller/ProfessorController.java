@@ -28,15 +28,15 @@ public class ProfessorController {
 @Autowired
 ProfessorRepository professorRepository;
 
-@GetMapping(value="/listaProfessores",produces=MediaType.APPLICATION_JSON_VALUE)
+@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 public List<Professor> getAll(){
     return professorRepository.findAll();
-
 }
 @GetMapping(value="/listaProfessores/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
 public Optional<Professor> getId(@PathVariable (value = "id") int id){
     return professorRepository.findById(id);
 }
+
 @PostMapping(value="/add",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
 public Professor add(@RequestBody Professor professor){
     professor.setAtivo(true);

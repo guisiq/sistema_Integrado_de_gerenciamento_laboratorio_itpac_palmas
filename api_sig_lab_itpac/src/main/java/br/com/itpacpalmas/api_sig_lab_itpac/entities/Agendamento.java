@@ -3,6 +3,7 @@ package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 import java.sql.Date;
 
 import javax.persistence.ManyToOne;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

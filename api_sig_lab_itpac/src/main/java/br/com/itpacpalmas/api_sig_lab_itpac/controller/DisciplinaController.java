@@ -18,7 +18,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.entities.Disciplina;
 import br.com.itpacpalmas.api_sig_lab_itpac.services.DisciplinaService;
 
 @RestController
-@RequestMapping(value = "api/gerenciamento/disciplina")
+@RequestMapping(value = "api/disciplina")
 
 public class DisciplinaController {
     @Autowired
