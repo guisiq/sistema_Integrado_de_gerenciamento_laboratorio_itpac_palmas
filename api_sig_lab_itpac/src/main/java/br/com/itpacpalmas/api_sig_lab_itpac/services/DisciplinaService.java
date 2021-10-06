@@ -32,15 +32,6 @@ public class DisciplinaService {
         return repo.save(obj);
     }
 
-    public void desativar (Integer id){
-        //Verificando se o id existe
-        find(id);
-        try{
-            repo.deleteById(id);
-        }catch(DataIntegrityViolationException e){
-            
-        }
-    }
     public List<Disciplina> findAll(){
         return repo.findAll();
     }
