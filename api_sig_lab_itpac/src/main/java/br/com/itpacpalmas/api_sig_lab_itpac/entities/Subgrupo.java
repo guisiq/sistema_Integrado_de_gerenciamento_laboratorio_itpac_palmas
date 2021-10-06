@@ -2,16 +2,13 @@ package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 
@@ -22,20 +19,22 @@ public class Subgrupo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idsubgrupo")
 	private Integer id;
 	
 	@Column(nullable = false, length = 60)
 	private String nome;
-	/*
-	@OneToMany
-	@JoinColumn(name = "professor_id", referencedColumnName = "id")
-	private Professor professor;
-	*/
+	
+	
 	@ManyToOne
-	@JoinColumn(name = "disciplina_id", referencedColumnName = "id")
+	@JoinColumn(name = "professor")
+	private Professor professor;
+	
+	@ManyToOne
+	@JoinColumn(name = "disciplina")
 	private Disciplina disciplina;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST})
+	@ManyToMany
 	@JoinTable(name="aluno_subgrupo",
 	        joinColumns={@JoinColumn(name="aluno")},
 	        inverseJoinColumns={@JoinColumn(name="subgrupo")})
