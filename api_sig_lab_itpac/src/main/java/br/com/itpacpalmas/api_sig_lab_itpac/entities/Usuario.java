@@ -6,20 +6,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity(name="usuario")
 public class Usuario{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "idusuario")
     private Integer id;
     @Column( name = "senha")
     private String senha;
     @Column( name = "login")
     private String login;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name ="perfil_user")
     private PerfilUser perfilUser;
+    @OneToOne
+    @JoinColumn(name ="pessoa")
     private Pessoa pessoa;
 
     public Integer getId() {

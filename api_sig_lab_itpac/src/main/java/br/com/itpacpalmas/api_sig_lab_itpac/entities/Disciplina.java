@@ -7,9 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.GenerationType;
 
@@ -20,11 +17,13 @@ public class Disciplina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iddiciplina")
     private Integer id;
-    private String nome;
-    private String apelido;
+        
     @ManyToOne
     @JoinColumn(name = "periodo")
     private Periodo periodo;
+
+    private String nome;
+    private String apelido;
     private Boolean ativo;
     
     
