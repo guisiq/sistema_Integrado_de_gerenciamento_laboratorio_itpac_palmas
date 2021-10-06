@@ -140,6 +140,136 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Aluno",
+			"item": [
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"matricula\": \"234509876\",\r\n    \"pessoa\": null\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/aluno/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluno",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/aluno/desativar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluno",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/aluno/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluno",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/aluno/get/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluno",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"matricula\": \"234509876\",\r\n    \"pessoa\": null,\r\n    \"ativo\": true\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/aluno/alter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluno",
+								"alter"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
