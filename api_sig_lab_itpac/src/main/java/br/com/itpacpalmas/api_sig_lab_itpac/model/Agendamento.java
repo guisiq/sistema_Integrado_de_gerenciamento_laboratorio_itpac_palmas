@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.entities;
+package br.com.itpacpalmas.api_sig_lab_itpac.model;
 
 import java.sql.Date;
 
@@ -8,13 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
-
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Subgrupo;
 import javax.persistence.GenerationType;
 @Entity
 public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idaendamento")
     private Integer id;
     
     private String motivo;
