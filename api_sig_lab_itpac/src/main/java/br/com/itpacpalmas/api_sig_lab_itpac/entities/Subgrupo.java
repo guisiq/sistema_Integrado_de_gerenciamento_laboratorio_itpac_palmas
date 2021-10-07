@@ -27,6 +27,7 @@ public class Subgrupo {
 	@Column(nullable = false, length = 60)
 	private String nome;
 	
+	private Boolean ativo;
 	
 	@ManyToOne
 	@JoinColumn(name = "professor")
@@ -82,6 +83,14 @@ public class Subgrupo {
 
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 }
