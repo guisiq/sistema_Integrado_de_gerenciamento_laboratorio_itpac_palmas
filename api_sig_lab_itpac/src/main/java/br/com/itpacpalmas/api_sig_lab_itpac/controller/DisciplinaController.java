@@ -6,11 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -23,12 +25,19 @@ import br.com.itpacpalmas.api_sig_lab_itpac.services.DisciplinaService;
 public class DisciplinaController {
     @Autowired
     private DisciplinaService service;
-
-
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Disciplina> find(@PathVariable Integer id){
         Disciplina obj = service.find(id);
+        return ResponseEntity.ok().body(obj);
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<Disciplina>> findbyname(@RequestParam("nome") String nome){
+        List<Disciplina> obj = service.findAll();
+        if (nome != null) {
+            obj.removeIf(p -> !p.getNome().equals(nome));
+        }
         return ResponseEntity.ok().body(obj);
     }
 
@@ -49,12 +58,6 @@ public class DisciplinaController {
         obj = service.update(obj);
 
         return ResponseEntity.noContent().build();
-    }
-
-    @RequestMapping( method = RequestMethod.GET)
-    public ResponseEntity<List<Disciplina>> findAll(){
-        List<Disciplina> list = service.findAll();
-        return ResponseEntity.ok().body(list);
     }
 
     @PatchMapping(value="/desativar/{id}",produces=MediaType.APPLICATION_JSON_VALUE)

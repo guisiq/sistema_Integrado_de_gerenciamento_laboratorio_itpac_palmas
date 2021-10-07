@@ -38,6 +38,7 @@ public class DisciplinaService {
     public List<Disciplina> findAll(){
         return repo.findAll();
     }
+    
     public ResponseEntity<Disciplina> disable(Integer id){
         try{
             Disciplina disciplina = repo.findById(id).get();
