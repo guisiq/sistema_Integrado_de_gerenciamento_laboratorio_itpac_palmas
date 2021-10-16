@@ -37,7 +37,7 @@ public class Agendamento {
     @ManyToOne
     @JoinColumn(name = "subgrupo") 
     private Subgrupo subgrupo; 
-    @JsonFormat(pattern = "dd-MM-yyy", timezone = "GMT-3")
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "GMT-3")
     private Date data;
 
     private boolean ativo ;

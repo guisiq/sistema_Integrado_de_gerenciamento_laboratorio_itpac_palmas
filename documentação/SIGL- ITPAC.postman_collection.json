@@ -284,9 +284,16 @@
 							"type": "basic"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "data",
+								"value": "16-10-2021",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/api/periodo/Agendamentos/findByData",
+							"raw": "http://localhost:8080/api/periodo/Agendamentos/buscarPorDatas/16-10-2021",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -296,42 +303,8 @@
 								"api",
 								"periodo",
 								"Agendamentos",
-								"findByData"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Buscar por periodo de data",
-					"request": {
-						"auth": {
-							"type": "basic"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/periodo/Agendamentos/findByPeriod?inicio=10-10-2021&termino=20-10-2021",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"periodo",
-								"Agendamentos",
-								"findByPeriod"
-							],
-							"query": [
-								{
-									"key": "inicio",
-									"value": "10-10-2021"
-								},
-								{
-									"key": "termino",
-									"value": "20-10-2021"
-								}
+								"buscarPorDatas",
+								"16-10-2021"
 							]
 						}
 					},
@@ -379,7 +352,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"motivo\": \"Sala 1\",\r\n   \"data\": \"16/10/2021\",\r\n    \"ativo\" : true\r\n}",
+							"raw": "{\r\n   \"motivo\": \"Sala 1\",\r\n   \"data\": \"16-10-2021\",\r\n    \"ativo\" : true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -418,7 +391,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"nome\": \"Sala\",\r\n    \"local\": \"Palmas\",\r\n    \"capacidade\": 30,\r\n    \"descricao\": \"Sala de estudos em Palmas\",\r\n    \"ativo\": true\r\n}",
+							"raw": "{\r\n        \"id\": 2,\r\n        \"motivo\": \"motivo\",\r\n        \"manual\": null,\r\n        \"professor\": null,\r\n        \"sala\": null,\r\n        \"status\": null,\r\n        \"subgrupo\": null,\r\n        \"data\": null,\r\n        \"ativo\": true\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -426,7 +399,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/sala",
+							"raw": "http://localhost:8080/api/periodo/Agendamentos",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -434,7 +407,8 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"sala"
+								"periodo",
+								"Agendamentos"
 							]
 						}
 					},

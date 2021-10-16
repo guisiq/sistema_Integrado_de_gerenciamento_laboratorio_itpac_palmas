@@ -1,5 +1,7 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +25,12 @@ import br.com.itpacpalmas.api_sig_lab_itpac.repository.AgendamentoRepository;
 
 public class AgendamentoController {
     @Autowired
-    AgendamentoRepository agendamentoRepository ;
+    AgendamentoRepository agendamentoRepository;
 
     @PostMapping
     public ResponseEntity<Agendamento> cadastrar(@RequestBody Agendamento agendamento) {
         Agendamento agendamentoSalvo;
-        
+
         try {
             agendamentoSalvo = agendamentoRepository.save(agendamento);
         } catch (Exception e) {
@@ -41,7 +43,7 @@ public class AgendamentoController {
     public ResponseEntity<Agendamento> atualizar(@RequestBody Agendamento Agendamento) {
         Agendamento AgendamentoSalvo;
         try {
-            
+
             AgendamentoSalvo = agendamentoRepository.save(Agendamento);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -60,30 +62,26 @@ public class AgendamentoController {
 
     }
 
-    @GetMapping("buscarPorData/{data}")
-    public List<Agendamento> findByData(@PathVariable(value = "data") Date data) {
-        return agendamentoRepository.findByData(data);
-    }
-
-    @GetMapping(value = "/findByPeriod")
-    public ResponseEntity<List<Agendamento>> findByPeriod(Date inicio, Date termino) {
-        List<Agendamento> collection = agendamentoRepository.findByPeriod(inicio, termino);
-        return ResponseEntity.ok().body(collection);
-    }
-
-
-    @PatchMapping(value="/desativar/{id}")
-	public ResponseEntity<Agendamento> disable(@PathVariable( value =  "id") Integer id) {
-		try{
+    @PatchMapping(value = "/desativar/{id}")
+    public ResponseEntity<Agendamento> disable(@PathVariable(value = "id") Integer id) {
+        try {
             Agendamento agendamento = agendamentoRepository.findById(id).get();
-			agendamento.setAtivo(false);
-			agendamentoRepository.save(agendamento);
-			return ResponseEntity.status(HttpStatus.OK).body(agendamento);
-		}catch(Exception e){
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-	}
-		}
+            agendamento.setAtivo(false);
+            agendamentoRepository.save(agendamento);
+            return ResponseEntity.status(HttpStatus.OK).body(agendamento);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 
-       
+    @GetMapping("buscarPorDatas/{data}")
+    public List<Agendamento> findByData(@PathVariable(value = "data") String dataRecebida) throws ParseException {
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        Date dataFormatada = formato.parse(dataRecebida);
+
+        return agendamentoRepository.findByData(dataFormatada);
+    }
+
 }

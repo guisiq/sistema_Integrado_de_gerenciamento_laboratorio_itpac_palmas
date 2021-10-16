@@ -15,7 +15,7 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Intege
     @Query(value = "select * from agendamento a  where a.ativo = true", nativeQuery = true)
     List<Agendamento> buscarTodos();
 
-    @Query(value = "select * from agendamento a  where a.data = :data" , nativeQuery = true)
+    //@Query(value = "select * from agendamento a  where a.data = :data" , nativeQuery = true)
     List<Agendamento> findByData(Date data);
 
     @Query(value = "SELECT * FROM agendamento a WHERE a.data BETWEEN :inicio and :termino", nativeQuery = true)
