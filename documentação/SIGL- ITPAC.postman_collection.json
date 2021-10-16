@@ -226,6 +226,223 @@
 			]
 		},
 		{
+			"name": "Agendamento",
+			"item": [
+				{
+					"name": "BuscarTodos",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/Agendamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por id",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/Agendamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por data",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/Agendamentos/findByData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"findByData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por periodo de data",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/Agendamentos/findByPeriod?inicio=10-10-2021&termino=20-10-2021",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"findByPeriod"
+							],
+							"query": [
+								{
+									"key": "inicio",
+									"value": "10-10-2021"
+								},
+								{
+									"key": "termino",
+									"value": "20-10-2021"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/Agendamentos/desativar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"motivo\": \"Sala 1\",\r\n   \"data\": \"16/10/2021\",\r\n    \"ativo\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/Agendamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nome\": \"Sala\",\r\n    \"local\": \"Palmas\",\r\n    \"capacidade\": 30,\r\n    \"descricao\": \"Sala de estudos em Palmas\",\r\n    \"ativo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sala",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sala"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Permissao",
 			"item": [
 				{
@@ -286,136 +503,6 @@
 								"api",
 								"permissao",
 								"buscarTodos"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Aluno",
-			"item": [
-				{
-					"name": "Cadastrar",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"matricula\": \"234509876\",\r\n    \"pessoa\": null\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/aluno/add",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"aluno",
-								"add"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Desativar",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/aluno/desativar/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"aluno",
-								"desativar",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "BuscarTodos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/aluno/getAll",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"aluno",
-								"getAll"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Buscar por id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/aluno/get/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"aluno",
-								"get",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\":1,\r\n    \"matricula\": \"234509876\",\r\n    \"pessoa\": null,\r\n    \"ativo\": true\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/aluno/alter",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"aluno",
-								"alter"
 							]
 						}
 					},
