@@ -32,12 +32,17 @@ public class DisciplinaController {
         return ResponseEntity.ok().body(obj);
     }
     
-    @GetMapping
+    @GetMapping(value = "/getbyname")
     public ResponseEntity<List<Disciplina>> findbyname(@RequestParam("nome") String nome){
         List<Disciplina> obj = service.findAll();
         if (nome != null) {
             obj.removeIf(p -> !p.getNome().equals(nome));
         }
+        return ResponseEntity.ok().body(obj);
+    }
+    @GetMapping(value = "/get")
+    public ResponseEntity<List<Disciplina>> findAll(){
+        List<Disciplina> obj = service.findAll();
         return ResponseEntity.ok().body(obj);
     }
 

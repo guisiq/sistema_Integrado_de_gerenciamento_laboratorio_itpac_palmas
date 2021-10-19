@@ -27,23 +27,23 @@ public class AlunoController {
 	AlunoRepository alunoRepository;
 	
 	
-	@PostMapping(value="/add",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
 	public Aluno add(@RequestBody Aluno aluno) {
 		 aluno.setAtivo(true);
 	  return alunoRepository.save(aluno);	
 	}
 	
-	@GetMapping(value="/get/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
 	public Optional<Aluno> findById(@PathVariable(value="id") int id) {
 	  return alunoRepository.findById(id);	
 	}
 	
-	@GetMapping(value="/getAll",produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Aluno> findAll() {
 	  return alunoRepository.findAll();	
 	}
 	
-	@PutMapping(value="/alter",produces=MediaType.APPLICATION_JSON_VALUE,consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(produces=MediaType.APPLICATION_JSON_VALUE,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Aluno alter(@RequestBody Aluno aluno) {
 	  return alunoRepository.save(aluno);	
 	}

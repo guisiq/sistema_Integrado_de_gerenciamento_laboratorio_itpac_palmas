@@ -68,7 +68,6 @@ public class Subgrupo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-/*
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -76,7 +75,7 @@ public class Subgrupo {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-*/
+
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}

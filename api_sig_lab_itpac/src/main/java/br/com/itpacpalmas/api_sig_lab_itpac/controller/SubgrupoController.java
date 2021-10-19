@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Aluno;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Subgrupo;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.SubgrupoRepository;
+import br.com.itpacpalmas.api_sig_lab_itpac.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("api/subgrupo")
@@ -28,39 +29,41 @@ public class SubgrupoController {
 	@Autowired
 	SubgrupoRepository subgrupoRepository;
 	
-	@PostMapping(value="/add",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping()
 	public Subgrupo add(@RequestBody Subgrupo subgrupo) {
 		subgrupo.setAtivo(true);
-	  return subgrupoRepository.save(subgrupo);	
+	    return subgrupoRepository.save(subgrupo);	
 	}
 	
 	
-	@GetMapping(value="/get/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}")
 	public Optional<Subgrupo> findById(@PathVariable(value="id") int id) {
 	  return subgrupoRepository.findById(id);	
 	}
 	
-	@GetMapping(value="/getAll",produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping()
 	public List<Subgrupo> findAll() {
 	  return subgrupoRepository.findAll();	
 	}
 	
-	@PutMapping(value="/alter",produces=MediaType.APPLICATION_JSON_VALUE,consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping()
 	public Subgrupo alter(@RequestBody Subgrupo subgrupo) {
 	  return subgrupoRepository.save(subgrupo);	
 	}
 	
-	@PatchMapping(value="/desativar/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	@PatchMapping(value="/desativar/{id}")
 	public ResponseEntity<Subgrupo> disable(@PathVariable( value =  "id") Integer id) {
-		try{
-            Subgrupo subgrupo = subgrupoRepository.findById(id).get();
+		    Subgrupo subgrupo = subgrupoRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("subgrupo com id especificado nao foi encontrado "));
 			subgrupo.setAtivo(false);
 			subgrupoRepository.save(subgrupo);
 			return ResponseEntity.status(HttpStatus.OK).body(subgrupo);
-		}catch(Exception e){
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	}
-		}
+	@PatchMapping(value="/Ativar/{id}")
+	public ResponseEntity<Subgrupo> ativar(@PathVariable( value =  "id") Integer id) {
+		    Subgrupo subgrupo = subgrupoRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("subgrupo com id especificado nao foi encontrado "));
+			subgrupo.setAtivo(true);
+			subgrupoRepository.save(subgrupo);
+			return ResponseEntity.status(HttpStatus.OK).body(subgrupo);
+	}
 	
 }
