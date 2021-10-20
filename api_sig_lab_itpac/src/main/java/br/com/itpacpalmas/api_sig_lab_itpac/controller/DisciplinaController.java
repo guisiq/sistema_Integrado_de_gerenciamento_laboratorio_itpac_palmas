@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Disciplina;
-import br.com.itpacpalmas.api_sig_lab_itpac.Services.*;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.DisciplinaService;
 
 @RestController
 @RequestMapping(value = "api/disciplina")
