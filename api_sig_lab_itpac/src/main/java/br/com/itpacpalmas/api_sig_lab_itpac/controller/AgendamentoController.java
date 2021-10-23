@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Agendamento;
@@ -83,5 +84,18 @@ public class AgendamentoController {
 
         return agendamentoRepository.findByData(dataFormatada);
     }
+    @GetMapping("buscarPorPeriodo")
+    public List<Agendamento> findByPeriodoData(@RequestParam("inicio") String inicio, @RequestParam("termino") String termino) throws ParseException {
 
+       
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        Date dataFormatadaInicio = formato.parse(inicio);
+
+        SimpleDateFormat formate = new SimpleDateFormat("dd-MM-yyyy");
+        Date dataFormatadaTermino = formate.parse(termino);
+
+        
+        return agendamentoRepository.findByPeriod(dataFormatadaInicio, dataFormatadaTermino);
+    }
+       
 }
