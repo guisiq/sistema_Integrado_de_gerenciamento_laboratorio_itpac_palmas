@@ -3,6 +3,9 @@ package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 import java.sql.Date;
 
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +37,11 @@ public class Agendamento {
     @ManyToOne
     @JoinColumn(name = "subgrupo") 
     private Subgrupo subgrupo; 
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "GMT-3")
     private Date data;
+
+    private boolean ativo ;
+
     public Integer getId() {
         return id;
     }
@@ -83,5 +90,18 @@ public class Agendamento {
     public void setData(Date data) {
         this.data = data;
     } 
+
+    public boolean getAtivo() {
+        return ativo;
+    }
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    } 
     
 }
+/*"manual" : {"id" : 1},
+"professor" : {"id" : 1},
+"sala" : {"id" : 1},
+"status" : {"id" : 1},
+"subgrupo" : {"id" : 1},
+"data" : {"id" : 1},*/
