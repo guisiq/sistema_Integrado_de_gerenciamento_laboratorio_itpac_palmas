@@ -39,7 +39,7 @@ public class StatusController {
     public ResponseEntity<Status> atualizar(@RequestBody Status status) {
         Status statusSalvo;
         try {
-            
+           
             statusSalvo = statusRepository.save(status);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
