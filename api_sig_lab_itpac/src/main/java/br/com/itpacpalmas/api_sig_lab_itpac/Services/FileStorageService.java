@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.Services;
+package br.com.itpacpalmas.api_sig_lab_itpac.services;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -137,7 +137,7 @@ public class FileStorageService {
 	}
 
     public ManualResponseVO update(int id ,String descricao ) {
-		var retorno = repo.findById(id)
+		Manual retorno = repo.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("entidade nao encontrada no banco "));
 		retorno.setDescricao(descricao);
 		repo.save(retorno);

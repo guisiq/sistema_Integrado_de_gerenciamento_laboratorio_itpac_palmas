@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -17,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ManualResponseVO;
-import br.com.itpacpalmas.api_sig_lab_itpac.Services.FileStorageService;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.FileStorageService;
 
 
 // https://www.youtube.com/watch?v=DtC_KfU6b1o
 @RestController
 @RequestMapping("api/manual")
+@CrossOrigin("http://localhost:8080")
 public class ManualController {
     @Autowired
 	private FileStorageService servises;
