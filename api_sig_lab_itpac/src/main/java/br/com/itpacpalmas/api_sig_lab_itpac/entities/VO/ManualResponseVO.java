@@ -102,7 +102,7 @@ public class ManualResponseVO implements Serializable{
     }
 
     public Manual toManual() {
-        var retorno = new Manual();
+        Manual retorno = new Manual();
 		retorno.setDescricao(this.Descricao);
 		retorno.setDocumento(this.fileName);
 		return retorno;
