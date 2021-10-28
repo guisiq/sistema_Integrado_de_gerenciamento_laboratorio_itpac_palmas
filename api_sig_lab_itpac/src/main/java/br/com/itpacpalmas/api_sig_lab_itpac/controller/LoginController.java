@@ -11,8 +11,8 @@ import br.com.itpacpalmas.api_sig_lab_itpac.entities.Usuario;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("api/usuario")
-public class UsuarioController {
+@RequestMapping("api/login")
+public class LoginController {
     @Autowired
     private UsuarioRepository repo;
     @GetMapping(value = "/getroles")
