@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Disciplina;
+import br.com.itpacpalmas.api_sig_lab_itpac.repository.DisciplinaRepository;
 import br.com.itpacpalmas.api_sig_lab_itpac.services.DisciplinaService;
 
 @RestController
@@ -22,13 +23,16 @@ public class DisciplinaController {
     @Autowired
     private DisciplinaService service;
     
-    @GetMapping(value = "/{id}")
+    @Autowired
+    private DisciplinaRepository repo;
+    
+    @GetMapping(value = "/getbyid/{id}")
     public Disciplina find(@PathVariable Integer id){
-        Disciplina obj = service.find(id);
+        Disciplina obj = repo.findById(id).get();
         return obj;
     }
     
-    @GetMapping()
+    @GetMapping(value = "/get")
     public List<Disciplina> findbyname(@RequestParam("nome") String nome){
         List<Disciplina> obj = service.findAll();
         if (nome != null) {

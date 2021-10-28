@@ -36,6 +36,12 @@ public class Disciplina {
     private Boolean ativo;
     
     
+    public List<Professor> getProfessores() {
+        return professores;
+    }
+    public void setProfessores(List<Professor> professores) {
+        this.professores = professores;
+    }
     public Periodo getPeriodo() {
         return periodo;
     }
