@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.*;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.UserServices;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -28,11 +29,11 @@ public class JwtTokenProvider {
 	@Value("${security.jwt.token.secret-key:secret}")
 	private String secretKey = "secret";
 	
-	@Value("${security.jwt.token.expire-length:3600000}")
-	private long validityInMilliseconds = 3600000; //1h
+	@Value("${security.jwt.token.expire-length:60000}")
+	private long validityInMilliseconds = 60000; //1h
 	
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private UserServices userDetailsService;
 	
 	@PostConstruct
 	protected void init() {
