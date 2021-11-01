@@ -1,5 +1,7 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.config;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.security.jwt.JwtConfigurer;
 import br.com.itpacpalmas.api_sig_lab_itpac.security.jwt.JwtTokenProvider;
@@ -31,10 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
+
 		http.httpBasic().disable().csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/signin").permitAll().antMatchers("/api/**").authenticated().antMatchers("/users")
-				.denyAll().and().apply(new JwtConfigurer(tokenProvider));
+				.antMatchers("/auth/signin").permitAll().antMatchers("/api/**").hasAnyRole("ADMIN").and()
+				.apply(new JwtConfigurer(tokenProvider));
+
 	}
 
 }
