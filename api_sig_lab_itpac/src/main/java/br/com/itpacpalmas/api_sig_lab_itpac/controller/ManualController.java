@@ -50,23 +50,21 @@ public class ManualController {
     }
     
     @PatchMapping("/updateDescricao/{id}/{descricao}")
-    public void update(@PathVariable int id,@PathVariable String descricao) {
-        servises.update(id, descricao);
+    public ManualResponseVO update(@PathVariable int id,@PathVariable String descricao) {
+        return servises.update(id, descricao);
     }
 
     @PatchMapping("/desativar/{id}")
-    public void desativar(@PathVariable int id,@PathVariable String descricao) {
-        servises.desativar(id);
+    public ManualResponseVO desativar(@PathVariable int id) {
+        return servises.desativar(id);
+    
     }
 
     @PatchMapping("/ativar/{id}")
-    public void ativar(@PathVariable int id,@PathVariable String descricao) {
-        servises.ativar(id);
+    public ManualResponseVO ativar(@PathVariable int id) {
+        return servises.ativar(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void delet(@PathVariable int id) {
-       servises.delete(id); 
-    }
+   
 
 }

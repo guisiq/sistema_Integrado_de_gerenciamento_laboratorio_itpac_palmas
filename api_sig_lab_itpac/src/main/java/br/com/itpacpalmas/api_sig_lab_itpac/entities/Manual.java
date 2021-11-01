@@ -15,6 +15,7 @@ public class Manual {
     private Integer id;
     private String descricao;
     private String documento;
+    @Column(columnDefinition = "boolean default false")
     private boolean ativo;
 
 
@@ -22,6 +23,16 @@ public class Manual {
     
     public Integer getId() {
         return this.id;
+    }
+
+    public Manual() {
+    }
+
+    public Manual(Integer id, String descricao, String documento, boolean ativo) {
+        this.id = id;
+        this.descricao = descricao;
+        this.documento = documento;
+        this.ativo = ativo;
     }
 
     public boolean isAtivo() {

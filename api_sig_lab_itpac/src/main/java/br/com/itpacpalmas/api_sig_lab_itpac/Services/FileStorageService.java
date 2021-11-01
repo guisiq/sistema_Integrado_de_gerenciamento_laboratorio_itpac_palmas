@@ -100,7 +100,7 @@ public class FileStorageService {
 		getManual.setDocumento(fileName);;
 		
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/api/file/downloadFile/")
+				.path("/api/Manual/doc/"+getManual.getId())
 				.path(fileName)
 				.toUriString();
 		
@@ -148,16 +148,16 @@ public class FileStorageService {
 		repo.deleteById(id);
 	}
 
-    public void desativar(int id) {
+    public ManualResponseVO desativar(int id) {
 		Manual manual = repo.findById(id).get();
 		manual.setAtivo(false);
-		repo.save(manual);
+		return ManualResponseVO.convert(repo.save(manual));
     }
 
-    public void ativar(int id) {
+    public ManualResponseVO ativar(int id) {
 		Manual manual = repo.findById(id).get();
 		manual.setAtivo(true);
-		repo.save(manual);
+		return ManualResponseVO.convert(repo.save(manual));
     }
 
 }

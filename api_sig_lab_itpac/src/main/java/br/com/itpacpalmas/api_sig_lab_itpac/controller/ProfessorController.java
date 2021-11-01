@@ -42,6 +42,7 @@ public Optional<Professor> getId(@PathVariable (value = "id") int id){
 
 @PostMapping()
 public Professor add(@RequestBody Professor professor){
+    
     return professorRepository.save(professor);
 }
 @PutMapping()

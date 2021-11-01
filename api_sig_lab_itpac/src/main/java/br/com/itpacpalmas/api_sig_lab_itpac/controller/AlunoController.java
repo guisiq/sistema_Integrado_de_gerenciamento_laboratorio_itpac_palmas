@@ -60,8 +60,20 @@ public class AlunoController {
 		}catch(Exception e){
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-	}
 		}
+	}
+	@PatchMapping(value="/Ativar/{id}")
+	public ResponseEntity<Aluno> ativar(@PathVariable( value =  "id") Integer id) {
+		try{
+            Aluno aluno = alunoRepository.findById(id).get();
+			aluno.setAtivo(true);
+			alunoRepository.save(aluno);
+			return ResponseEntity.status(HttpStatus.OK).body(aluno);
+		}catch(Exception e){
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+	}
 		
 
 		
