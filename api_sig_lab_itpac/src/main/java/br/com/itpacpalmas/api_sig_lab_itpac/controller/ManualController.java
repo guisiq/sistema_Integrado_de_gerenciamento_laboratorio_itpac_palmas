@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,6 +24,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.services.FileStorageService;
 // https://www.youtube.com/watch?v=DtC_KfU6b1o
 @RestController
 @RequestMapping("api/manual")
+@CrossOrigin
 public class ManualController {
     @Autowired
 	private FileStorageService servises;
@@ -47,9 +49,19 @@ public class ManualController {
         return servises.uploadFile(file,descricao);
     }
     
-    @PatchMapping("/{id}/{descricao}")
+    @PatchMapping("/updateDescricao/{id}/{descricao}")
     public void update(@PathVariable int id,@PathVariable String descricao) {
         servises.update(id, descricao);
+    }
+
+    @PatchMapping("/desativar/{id}")
+    public void desativar(@PathVariable int id,@PathVariable String descricao) {
+        servises.desativar(id);
+    }
+
+    @PatchMapping("/ativar/{id}")
+    public void ativar(@PathVariable int id,@PathVariable String descricao) {
+        servises.ativar(id);
     }
 
     @DeleteMapping("/{id}")

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Disciplina;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.DisciplinaRepository;
 import br.com.itpacpalmas.api_sig_lab_itpac.services.DisciplinaService;
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "api/disciplina")
 public class DisciplinaController {
@@ -26,14 +27,14 @@ public class DisciplinaController {
     @Autowired
     private DisciplinaRepository repo;
     
-    @GetMapping(value = "/getbyid/{id}")
+    @GetMapping(value = "/{id}")
     public Disciplina find(@PathVariable Integer id){
         Disciplina obj = repo.findById(id).get();
         return obj;
     }
     
-    @GetMapping(value = "/get")
-    public List<Disciplina> findbyname(@RequestParam("nome") String nome){
+    @GetMapping()
+    public List<Disciplina> findbyname(@RequestParam(required = false) String nome){
         List<Disciplina> obj = service.findAll();
         if (nome != null) {
             obj.removeIf(p -> !p.getNome().equals(nome));
@@ -49,17 +50,22 @@ public class DisciplinaController {
     }
 
     @RequestMapping(value ="/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@RequestBody Disciplina obj, @PathVariable Integer id){
+    public ResponseEntity<Disciplina> update(@RequestBody Disciplina obj, @PathVariable Integer id){
         //Garantir que realmente é o objeto do ID
         obj.setId(id);
         obj = service.update(obj);
 
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body(obj);
     }
 
     @PatchMapping(value="/desativar/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Disciplina> disable (@PathVariable (value = "id")Integer id){
-        service.disable(id);
-        return ResponseEntity.noContent().build();
+        return service.disable(id);
+        
+    }
+    @PatchMapping(value="/ativar/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Disciplina> Ativar(@PathVariable (value = "id")Integer id){
+        return service.ativar(id);
+        
     }
 }

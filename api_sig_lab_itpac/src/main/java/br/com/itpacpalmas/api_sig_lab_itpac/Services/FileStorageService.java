@@ -147,4 +147,17 @@ public class FileStorageService {
 	public void delete(int id) {
 		repo.deleteById(id);
 	}
+
+    public void desativar(int id) {
+		Manual manual = repo.findById(id).get();
+		manual.setAtivo(false);
+		repo.save(manual);
+    }
+
+    public void ativar(int id) {
+		Manual manual = repo.findById(id).get();
+		manual.setAtivo(true);
+		repo.save(manual);
+    }
+
 }

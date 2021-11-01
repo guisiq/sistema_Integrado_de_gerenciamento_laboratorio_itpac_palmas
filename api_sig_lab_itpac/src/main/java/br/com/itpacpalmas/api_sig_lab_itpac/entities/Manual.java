@@ -15,11 +15,21 @@ public class Manual {
     private Integer id;
     private String descricao;
     private String documento;
+    private boolean ativo;
 
 
 //-------------Getter e Setter
+    
     public Integer getId() {
         return this.id;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
     public void setId(Integer id) {
