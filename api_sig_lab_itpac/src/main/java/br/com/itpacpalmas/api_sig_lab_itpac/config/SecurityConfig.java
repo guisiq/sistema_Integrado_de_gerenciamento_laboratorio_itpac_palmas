@@ -1,6 +1,6 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.config;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -38,8 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.httpBasic().disable().csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers("/auth/signin").permitAll()
-				.antMatchers("/api/**").hasAnyRole("ADMIN")
 				.antMatchers("/api/manual/**").hasAnyRole("TECNICO")
+				.antMatchers("/api/Agendamentos**").hasAnyRole("TECNICO")
+				.antMatchers("/api/**").hasAnyRole("ADMIN")
 				.anyRequest().authenticated()
 				.and()
 				.apply(new JwtConfigurer(tokenProvider));

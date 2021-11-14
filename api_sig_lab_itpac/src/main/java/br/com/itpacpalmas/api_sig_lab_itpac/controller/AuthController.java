@@ -23,7 +23,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.security.AccountCredentialsVO;
 import br.com.itpacpalmas.api_sig_lab_itpac.security.jwt.JwtTokenProvider;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/login")
 public class AuthController {
 
 	@Autowired
