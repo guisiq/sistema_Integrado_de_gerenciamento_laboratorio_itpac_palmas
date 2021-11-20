@@ -24,13 +24,27 @@ public class Aula{
     @Column(nullable = false, name = "horas_aprendizagem")
     private Double horasAprendizagem;
     @ManyToOne
-    @JoinColumn(name = "Agendamento")
+    @JoinColumn(name = "agendamento")
     private Agendamento agendamento;
     @OneToMany
     @JoinTable(name="presenca",
         joinColumns={@JoinColumn(name="aula")},
         inverseJoinColumns={@JoinColumn(name="aluno")})
     private List<Aluno> alunosPresentes;
+   
+    /*
+    @JoinTable(name="arquivos_aula",
+        joinColumns={@JoinColumn(name="aula")},
+        inverseJoinColumns={@JoinColumn(name="Arquivo")})
+    private List<Arquivo> arquivos;*/
+    
+    
+    public List<Aluno> getAlunosPresentes() {
+        return alunosPresentes;
+    }
+    public void setAlunosPresentes(List<Aluno> alunosPresentes) {
+        this.alunosPresentes = alunosPresentes;
+    }
     
     public Integer getId() {
         return id;

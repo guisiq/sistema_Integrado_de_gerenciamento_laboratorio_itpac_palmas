@@ -1,6 +1,7 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.ManyToOne;
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.GenerationType;
 public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idaendamento")
+    @Column(name = "idagendamento")
     private Integer id;
     
     private String motivo;
@@ -34,7 +35,7 @@ public class Agendamento {
     @ManyToOne
     @JoinColumn(name = "subgrupo") 
     private Subgrupo subgrupo; 
-    private Date data;
+    private LocalDate data;
     public Integer getId() {
         return id;
     }
@@ -77,11 +78,12 @@ public class Agendamento {
     public void setSubgrupo(Subgrupo subgrupo) {
         this.subgrupo = subgrupo;
     }
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
-    } 
+    }
+  
     
 }
