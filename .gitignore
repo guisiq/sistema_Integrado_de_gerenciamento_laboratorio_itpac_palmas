@@ -24,3 +24,4 @@ hs_err_pid*
 /api_sig_lab_itpac/target/*
 *.class
 api_sig_lab_itpac/src/main/docs/
+api_sig_lab_itpac/target/*
