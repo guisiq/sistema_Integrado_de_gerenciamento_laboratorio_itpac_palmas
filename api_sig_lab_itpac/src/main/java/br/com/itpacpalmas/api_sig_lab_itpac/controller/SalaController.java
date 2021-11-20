@@ -67,7 +67,7 @@ public class SalaController {
     public ResponseEntity<Sala> ativar(@PathVariable (value = "id" ) Integer id){
 
         Sala sala = salaRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Sala com o id descrito nao foi encontrado "));
-        sala.setAtivo(false);
+        sala.setAtivo(true);
         salaRepository.save(sala);
         return ResponseEntity.status(HttpStatus.OK).body(sala);
     }

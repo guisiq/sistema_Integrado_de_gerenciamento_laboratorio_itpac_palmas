@@ -22,7 +22,6 @@ import br.com.itpacpalmas.api_sig_lab_itpac.services.FileStorageService;
 
 
 // https://www.youtube.com/watch?v=DtC_KfU6b1o
-
 @RestController
 @RequestMapping("api/manual")
 @CrossOrigin
@@ -50,8 +49,8 @@ public class ManualController {
         return servises.uploadFile(file,descricao);
     }
     
-    @PatchMapping("/updateDescricao/{id}/{descricao}")
-    public ManualResponseVO update(@PathVariable int id,@PathVariable String descricao) {
+    @PatchMapping("/updateDescricao/{id}")
+    public ManualResponseVO update(@PathVariable int id,@RequestParam("descricao")String descricao) {
         return servises.update(id, descricao);
     }
 
