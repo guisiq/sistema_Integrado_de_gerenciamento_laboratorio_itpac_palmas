@@ -1,0 +1,18 @@
+CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedHeaders(List.of("Access-Control-Allow-Headers","Access-Control-Allow-Origin","Access-Control-Request-Method", "Access-Control-Request-Headers","Origin","Cache-Control", "Content-Type", "Authorization"));
+        corsConfiguration.setAllowedOriginPatterns(List.of("*"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE","OPTIONS","PATCH"));
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+
+        http.cors().configurationSource(request -> corsConfiguration)
+            .and().csrf().disable()
+            .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/forgot/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/funcionarios/**").permitAll()
+                .antMatchers("/api/cargos/salvar/**").hasAnyRole("Cadastrar Cargo")
+                .antMatchers("/api/cargos/atualizar/**").hasAnyRole("Atualizar Cargo")
+                .antMatchers("/api/cargos/deletar/**").hasAnyRole("Excluir Cargo")
+                .antMatchers("/api/cargos/buscarPorId/**").hasAnyRole("Obter Cargo por id")
+                .antMatchers("/api/cargos/buscarPorNome/**").hasAnyRole("Obter Cargo por nome")

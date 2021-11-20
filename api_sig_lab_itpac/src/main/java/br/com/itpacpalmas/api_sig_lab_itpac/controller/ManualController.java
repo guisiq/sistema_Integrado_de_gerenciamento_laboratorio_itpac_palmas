@@ -22,6 +22,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.services.FileStorageService;
 
 
 // https://www.youtube.com/watch?v=DtC_KfU6b1o
+
 @RestController
 @RequestMapping("api/manual")
 @CrossOrigin
