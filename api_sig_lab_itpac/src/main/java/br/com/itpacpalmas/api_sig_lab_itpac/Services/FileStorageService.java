@@ -101,7 +101,7 @@ public class FileStorageService {
 		
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/api/Manual/doc/"+getManual.getId())
-				.path(fileName)
+				//.path(fileName)
 				.toUriString();
 		
 		ManualResponseVO retorno = new ManualResponseVO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
