@@ -10,7 +10,4 @@ import br.com.itpacpalmas.api_sig_lab_itpac.entities.*;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    // @NatiQuery("SELECT u FROM Usuario u WHERE u.userName =:userName")
-    Usuario findByUserName(String userName);
-
 }

@@ -18,7 +18,7 @@ import javax.persistence.GenerationType;
 public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idaendamento")
+    @Column(name = "idagendamento")
     private Integer id;
     
     private String motivo;

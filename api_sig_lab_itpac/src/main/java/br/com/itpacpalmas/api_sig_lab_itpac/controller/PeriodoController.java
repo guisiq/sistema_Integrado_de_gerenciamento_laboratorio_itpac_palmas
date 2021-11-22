@@ -1,5 +1,6 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -31,6 +32,7 @@ public class PeriodoController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Periodo salvarItem(@RequestBody Periodo periodo) {
+        periodo.setDataCadastro(LocalDate.now());
         return periodoRepository.save(periodo);
     }
 
