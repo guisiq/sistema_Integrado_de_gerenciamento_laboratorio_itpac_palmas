@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,6 +47,9 @@ public class PeriodoController {
 
     @PutMapping
     public Periodo atualizaPeriodo(@RequestBody Periodo periodo) {
+        Periodo p = periodoRepository.findById(periodo.getId()).get();
+        //Mantém a data cadastro inalterada
+        periodo.setDataCadastro(p.getDataCadastro());
         return periodoRepository.save(periodo);
     }
 
