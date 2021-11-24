@@ -28,16 +28,16 @@ import br.com.itpacpalmas.api_sig_lab_itpac.exception.ResourceNotFoundException;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.ManualRepository;
 
 @Service
-public class FileStorageService {
+public class ManualService {
 
 	private final Path fileStorageLocation;
 	@Autowired
     ManualRepository repo;
 	
 	@Autowired
-	public FileStorageService(FileStorageConfig fileStorageConfig) {
+	public ManualService(FileStorageConfig fileStorageConfig) {
 		
-		this.fileStorageLocation = Paths.get(fileStorageConfig.getUploadDir())
+		this.fileStorageLocation = Paths.get(fileStorageConfig.getUploadManualDir())
 				.toAbsolutePath().normalize();
 		try {
 			Files.createDirectories(this.fileStorageLocation);

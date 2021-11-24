@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ManualResponseVO;
-import br.com.itpacpalmas.api_sig_lab_itpac.services.FileStorageService;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.ManualService;
 
 
 // https://www.youtube.com/watch?v=DtC_KfU6b1o
@@ -25,7 +25,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.services.FileStorageService;
 @RequestMapping("api/manual")
 public class ManualController {
     @Autowired
-	private FileStorageService servises;
+	private ManualService servises;
     
     @GetMapping()
     public  ResponseEntity<List<ManualResponseVO>> getInfo() {
