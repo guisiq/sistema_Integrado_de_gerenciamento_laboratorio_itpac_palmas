@@ -32,7 +32,7 @@ public class Aula{
         inverseJoinColumns={@JoinColumn(name="aluno")})
     private List<Aluno> alunosPresentes;
    
-    
+    @OneToMany
     @JoinTable(name="arquivos_aula",
         joinColumns={@JoinColumn(name="aula")},
         inverseJoinColumns={@JoinColumn(name="Arquivo")})

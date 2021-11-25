@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Arquivo;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Manual;
 @Component
 public class ArquivoResponseVO implements Serializable{
@@ -82,20 +83,19 @@ public class ArquivoResponseVO implements Serializable{
 		this.size = size;
 	}
 	//#endregion
-	public static ArquivoResponseVO convert(Manual manual) {
+	public static ArquivoResponseVO convert(Arquivo Arquivo,String fileDownloadUri) {
 		ArquivoResponseVO retorno = new ArquivoResponseVO();
-		retorno.fileName = manual.getDocumento();
-		retorno.fileDownloadUri = "/api/file/downloadFile/"+manual.getDocumento();
-		retorno.Descricao = manual.getDescricao();
-		retorno.id = manual.getId();
+		retorno.fileName = Arquivo.getCaminho();
+		retorno.fileDownloadUri = fileDownloadUri +Arquivo.getCaminho();
+		retorno.id = Arquivo.getId();
 		return retorno ;
 	}
 
-    public static List<ArquivoResponseVO> convertList(List<Manual> lManuals) {
+    public static List<ArquivoResponseVO> convertList(List<Arquivo> lArquivos,String fileDownloadUri) {
         List<ArquivoResponseVO> out = new ArrayList<ArquivoResponseVO>();
-		lManuals.forEach(
+		lArquivos.forEach(
 			manual -> out.add(
-						convert(manual)
+						convert(manual,fileDownloadUri)
 						)
 		);
 		return out;

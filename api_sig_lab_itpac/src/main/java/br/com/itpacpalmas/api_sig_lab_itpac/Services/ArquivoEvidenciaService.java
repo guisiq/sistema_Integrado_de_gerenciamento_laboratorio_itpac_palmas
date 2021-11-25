@@ -20,11 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.config.FileStorageConfig;
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Arquivo;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Manual;
-import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ManualResponseVO;
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ArquivoResponseVO;
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.FileStorageException;
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.MyFileNotFoundException;
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.ResourceNotFoundException;
+import br.com.itpacpalmas.api_sig_lab_itpac.repository.ArquivoRepository;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.ManualRepository;
 
 @Service
@@ -32,7 +34,7 @@ public class ArquivoEvidenciaService {
 
 	private final Path fileStorageLocation;
 	@Autowired
-    ManualRepository repo;
+    ArquivoRepository repo;
 	
 	@Autowired
 	public ArquivoEvidenciaService(FileStorageConfig fileStorageConfig) {
@@ -82,39 +84,37 @@ public class ArquivoEvidenciaService {
 	}
 
 	
-    public List<ManualResponseVO> buscarTodosInfo() {
-		return ManualResponseVO.convertList(repo.findAll()); 
+    public List<ArquivoResponseVO> buscarTodosInfo() {
+		return ArquivoResponseVO.convertList(repo.findAll(),fileStorageLocation.toString()); 
     }
     
-    public ManualResponseVO buscarbyIdInfo(int Id) {
-        //return ManualResponseVO.convert(repo.findById(Id).orElseThrow()); 
-        return ManualResponseVO.convert(repo.findById(Id).orElse(null)); 
+    public ArquivoResponseVO buscarbyIdInfo(int Id) {
+        //return ArquivoResponseVO.convert(repo.findById(Id).orElseThrow()); 
+        return ArquivoResponseVO.convert(repo.findById(Id).orElse(null),fileStorageLocation.toString()); 
         
     }
 
 
-	public ManualResponseVO uploadFile(MultipartFile file, String descricao) {
-		Manual getManual = repo.save(new Manual());
-		String fileName = this.storeFile(file,getManual.getId());
-		getManual.setDescricao(descricao);
-		getManual.setDocumento(fileName);;
+	public ArquivoResponseVO uploadFile(MultipartFile file,int id) {
+		Arquivo getArquivo = repo.save(new Arquivo());
+		String fileName = this.storeFile(file,getArquivo.getId(),id);
+		getArquivo.setCaminho(fileName);;
 		
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/api/file/downloadFile/")
 				.path(fileName)
 				.toUriString();
 		
-		ManualResponseVO retorno = new ManualResponseVO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
-		retorno.setDescricao(descricao);
-		retorno.setId(getManual.getId());
-		repo.save(getManual);
+		ArquivoResponseVO retorno = new ArquivoResponseVO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
+		retorno.setId(getArquivo.getId());
+		repo.save(getArquivo);
 		return retorno;
 	
 	}
 
 	
 	public ResponseEntity<Resource> downloadFile(int id, HttpServletRequest request) {
-		String fileName = repo.findById(id).get().getDocumento();
+		String fileName = repo.findById(id).get().getCaminho();
 		Resource resource = this.loadFileAsResource(fileName);
 		
 		String contentType = null;
@@ -136,12 +136,11 @@ public class ArquivoEvidenciaService {
 				
 	}
 
-    public ManualResponseVO update(int id ,String descricao ) {
+    public ArquivoResponseVO update(int id ,String descricao ) {
 		var retorno = repo.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("entidade nao encontrada no banco "));
-		retorno.setDescricao(descricao);
 		repo.save(retorno);
-		return ManualResponseVO.convert(retorno);
+		return ArquivoResponseVO.convert(retorno,fileStorageLocation.toString());
     }
 
 	public void delete(int id) {

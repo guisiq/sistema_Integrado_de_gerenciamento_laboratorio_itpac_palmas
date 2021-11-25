@@ -1,0 +1,1710 @@
+{
+	"info": {
+		"_postman_id": "8e0df0db-60d4-4a04-a1a9-d3e7b3472c03",
+		"name": "SIGL- ITPAC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "aluno",
+			"item": [
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/aluno",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getbyid",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://api-sig-itpac-84633.herokuapp.com",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/aluno/3",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"aluno",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \"pessoa\": {\r\n            \"nome\": \"teste2\",\r\n            \"cpf\": \"asasas\",\r\n            \"telefone\": \"1212121212\"\r\n        },\r\n        \"matricula\": \"teste 22\",\r\n        \"ativo\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/aluno",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/aluno/desativar/3",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"aluno",
+								"desativar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/aluno/Ativar/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluno",
+								"Ativar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"pessoa\": {\r\n        \"id\": 2,\r\n        \"nome\": \"teste2\",\r\n        \"cpf\": \"dededed\",\r\n        \"telefone\": \"23232323\"\r\n    },\r\n    \"matricula\": \"asasasasaseditar\",\r\n    \"ativo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/aluno/",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"aluno",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Diciplina",
+			"item": [
+				{
+					"name": "Buscar Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/disciplina",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"disciplina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/disciplina/2",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"disciplina",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": null,\r\n    \"periodo\": {\r\n        \"id\": 1,\r\n        \"periodo\": \"2022\\\\1\",\r\n        \"dataCadastro\": \"2021-10-07\",\r\n        \"ativo\": true\r\n    },\r\n    \"nome\": \"asdasda\",\r\n    \"apelido\": \"teste21\",\r\n    \"ativo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/localhost:8090/api/disciplina",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"localhost:8090",
+								"api",
+								"disciplina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"id\": 38,\r\n        \"periodo\": {\r\n            \"id\": 1,\r\n            \"periodo\": \"2020/2\",\r\n            \"dataCadastro\": \"2021-10-08\",\r\n            \"ativo\": false\r\n        },\r\n        \"professores\": [\r\n            { \"id\":38},\r\n            { \"id\":39},\r\n            { \"id\":45},\r\n            { \"id\":46},\r\n            { \"id\":47}\r\n        ],\r\n        \"nome\": \"asdasda\",\r\n        \"apelido\": \"teste21\",\r\n        \"ativo\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/disciplina",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"disciplina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/disciplina/desativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"disciplina",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/disciplina/ativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"disciplina",
+								"ativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar por nome",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/disciplina/getbyname?nome=iso",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"disciplina",
+								"getbyname"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "iso"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "manual",
+			"item": [
+				{
+					"name": "buscar todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/manual",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"manual"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enviar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/lopes/OneDrive/Documentos/atividade topicos.xlsx"
+								},
+								{
+									"key": "descricao",
+									"value": "teste 2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/manual",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"manual"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar arquivo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/manual/doc/2",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"manual",
+								"doc",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/manual/ativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"manual",
+								"ativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/manual/desativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"manual",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update descricao",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "descricao",
+									"value": "nova",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/manual/updateDescricao/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"manual",
+								"updateDescricao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "periodo",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZSIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYzNjgyNTQxOCwiZXhwIjoxNjM2ODI1NDc4fQ.NySw7tPP_zU3m1yGXRL6trl9RHVghmelO4CggwhtKf4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZSIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYzNjgyNTQxOCwiZXhwIjoxNjM2ODI1NDc4fQ.NySw7tPP_zU3m1yGXRL6trl9RHVghmelO4CggwhtKf4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \"pessoa\": {\r\n            \"nome\": \"teste2\",\r\n            \"cpf\": \"asasas\",\r\n            \"telefone\": \"1212121212\"\r\n        },\r\n        \"matricula\": \"teste 22\",\r\n        \"ativo\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/aluno",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZSIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYzNTgwNDk0MywiZXhwIjoxNjM1ODA1MDAzfQ.5yUTafn4yHjnS5Xza-h6EAelVMhNY2xF9wHS1RHKxug",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 2,\r\n        \"periodo\": \"2021\\\\2\",\r\n        \"dataCadastro\": \"2021-10-06\",\r\n        \"ativo\": true\r\n    },",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/periodo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/desativar/40",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"desativar",
+								"40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/periodo/ativar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"periodo",
+								"ativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "professor",
+			"item": [
+				{
+					"name": "buscar todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/professores",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"professores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZSIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYzNTgwNTE0MSwiZXhwIjoxNjM1ODA1MjAxfQ.nnZdplE2FTi_qtLKNKEanPYtGfPdtLn24htLeLYWLjE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/professores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"professores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/professores/ativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"professores",
+								"ativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/professores/desativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"professores",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": null,\r\n        \"pessoa\": {\r\n            \"id\": 1,\r\n            \"nome\": \"teste2\",\r\n            \"cpf\": \"asasas\",\r\n            \"telefone\": \"1212121212\"\r\n        },\r\n        \"ativo\": true,\r\n        \"matricula\": \"teste 2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/professores",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"professores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar Copy 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n         \"pessoa\": {\r\n             \"id\":null, \r\n              \"nome\": \"\",\r\n              \"cpf\": \"\",\r\n              \"email\": \"test@ggg\",\r\n              \"telefone\": \"111111\"\r\n          }, \r\n          \"ativo\": true,\r\n          \"matricula\": \"4242442424\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/professores",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"professores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"pessoa\": {\r\n            \"id\": 1,\r\n            \"nome\": \"teste2\",\r\n            \"cpf\": \"asasas\",\r\n            \"telefone\": \"1212121212\"\r\n        },\r\n        \"ativo\": true,\r\n        \"matricula\": \"teste 2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/professores",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"professores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/professores/desativar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"professores",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Status",
+			"item": [
+				{
+					"name": "BuscarTodos",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/status/",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"status",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Pendente\",\r\n     \"id\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/status/cadastrar",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"status",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"descricao\": \"teste 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/status/atualizar",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"status",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sala",
+			"item": [
+				{
+					"name": "BuscarTodos",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sala",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por id",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sala/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sala",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sala/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sala",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Sala 1\",\r\n    \"local\":\"itpac\",\r\n    \"capacidade\":20,\r\n    \"descricao\":\"Sala de estudos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sala",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"nome\": \"Sala\",\r\n    \"local\": \"Palmas\",\r\n    \"capacidade\": 30,\r\n    \"descricao\": \"Sala de estudos em Palmas 2\",\r\n    \"ativo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sala",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sala/desativar/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sala",
+								"desativar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/sala/ativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"sala",
+								"ativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agendamento",
+			"item": [
+				{
+					"name": "BuscarTodos",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/periodo/Agendamentos",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por id",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/periodo/Agendamentos/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por periodo de datas",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/periodo/Agendamentos/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por data",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "data",
+								"value": "16-10-2021",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/periodo/Agendamentos/buscarPorDatas/16-10-2021",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"buscarPorDatas",
+								"16-10-2021"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/periodo/Agendamentos/desativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"motivo\": \"Sala 1\",\r\n   \"data\": \"16-10-2021\",\r\n    \"ativo\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/periodo/Agendamentos",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 2,\r\n        \"motivo\": \"motivo\",\r\n        \"manual\": null,\r\n        \"professor\": null,\r\n        \"sala\": null,\r\n        \"status\": null,\r\n        \"subgrupo\": null,\r\n        \"data\": null,\r\n        \"ativo\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/periodo/Agendamentos",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"periodo",
+								"Agendamentos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "evidencia",
+			"item": [
+				{
+					"name": "loca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subgrupo",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"subgrupo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getbyid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"subgrupo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getbyname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo?name=teste",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"subgrupo"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "teste"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "creat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \r\n        \"nome\": \"teste\",\r\n        \"ativo\": true,\r\n        \"professor\": {\r\n            \"id\": 1,\r\n            \"pessoa\": {\r\n                \"id\": 1\r\n            },\r\n            \"ativo\": true,\r\n            \"matricula\": \"asasasas\"\r\n        },\r\n        \"disciplina\": {\r\n            \"id\": 1\r\n        },\r\n        \"alunos\": [\r\n            {\r\n                \"id\": 3\r\n            },\r\n            {\r\n                \"id\": 5\r\n            },\r\n            {\r\n                \"id\": 4\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"subgrupo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nome\": \"teste\",\r\n    \"ativo\": true,\r\n    \"professor\": {\r\n        \"id\": 1,\r\n        \"pessoa\": {\r\n            \"id\": 1,\r\n            \"nome\": \"teste1\",\r\n            \"cpf\": \"asasas\",\r\n            \"telefone\": \"1212121212\"\r\n        },\r\n        \"ativo\": true,\r\n        \"matricula\": \"asasasas\"\r\n    },\r\n    \"disciplina\": {\r\n        \"id\": 1,\r\n        \"periodo\": {\r\n            \"id\": 1,\r\n            \"periodo\": \"2022\\\\1\",\r\n            \"dataCadastro\": \"2021-10-07\",\r\n            \"ativo\": true\r\n        },\r\n        \"nome\": \"asdasda\",\r\n        \"apelido\": \"teste123\",\r\n        \"ativo\": true\r\n    },\r\n    \"alunos\": [\r\n        {\r\n            \"id\": 3,\r\n            \"pessoa\": {\r\n                \"id\": 1,\r\n                \"nome\": \"teste1\",\r\n                \"cpf\": \"asasas\",\r\n                \"telefone\": \"1212121212\"\r\n            },\r\n            \"matricula\": \"asdasdasdas\",\r\n            \"ativo\": false\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"pessoa\": {\r\n                \"id\": 3,\r\n                \"nome\": \"teste2\",\r\n                \"cpf\": \"asasas\",\r\n                \"telefone\": \"1212121212\"\r\n            },\r\n            \"matricula\": \"teste 22\",\r\n            \"ativo\": true\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"pessoa\": {\r\n                \"id\": 2,\r\n                \"nome\": \"teste2\",\r\n                \"cpf\": \"dededed\",\r\n                \"telefone\": \"23232323\"\r\n            },\r\n            \"matricula\": \"asasasasaseditar\",\r\n            \"ativo\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"subgrupo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo/desativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"subgrupo",
+								"desativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/subgrupo/Ativar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"subgrupo",
+								"Ativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo/Ativar/1",
+							"protocol": "http",
+							"host": [
+								"api-sig-itpac-84633",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"subgrupo",
+								"Ativar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuario/getroles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuario",
+						"getroles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"teste2\",\r\n    \"password\":\"admin123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
