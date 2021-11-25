@@ -2,6 +2,7 @@ package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.ManyToOne;
 

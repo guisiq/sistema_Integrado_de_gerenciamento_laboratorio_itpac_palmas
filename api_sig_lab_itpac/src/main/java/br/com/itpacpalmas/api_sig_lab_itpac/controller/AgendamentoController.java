@@ -124,12 +124,19 @@ public class AgendamentoController {
     }
 
     @GetMapping("buscarPorDatas/{data}")
-    public List<Agendamento> findByData(@PathVariable(value = "data") String dataRecebida) throws ParseException {
+    public List<Agendamento> findByData(@PathVariable(value = "data") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dataRecebida) throws ParseException {
 
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-        Date dataFormatada = formato.parse(dataRecebida);
+        // SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        // LocalDate dataFormatada = formato.parse(dataRecebida);
 
-        return agendamentoRepository.findByData(dataFormatada);
+        return agendamentoRepository.findByData(dataRecebida);
     }
 
+    @GetMapping("buscarPorPeriodo")
+    public List<Agendamento> findByPeriodoData(
+        @RequestParam("inicio") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate inicio, 
+        @RequestParam("termino") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate termino) throws ParseException {
+        
+        return agendamentoRepository.findByPeriod(inicio, termino);
+    }
 }
