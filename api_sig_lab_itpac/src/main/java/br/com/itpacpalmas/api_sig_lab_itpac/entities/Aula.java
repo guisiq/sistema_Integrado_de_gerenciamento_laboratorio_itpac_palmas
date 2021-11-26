@@ -1,5 +1,6 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -76,14 +77,5 @@ public class Aula{
     public void setAgendamento(Agendamento agendamento) {
         this.agendamento = agendamento;
     }
-    // public List<Aluno> getAlunosPresentes() {
-    //     return alunosPresentes;
-    // }
-    // public void setAlunosPresentes(List<Aluno> alunosPresentes) {
-    //     this.alunosPresentes = alunosPresentes;
-    // }
-
-    
-    
     
 }

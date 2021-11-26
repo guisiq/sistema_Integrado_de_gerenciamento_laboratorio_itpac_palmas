@@ -29,7 +29,14 @@ public class EvidenciaInfoController {
     public EvidenciaInfo Info(@PathVariable(value = "id") int id) {
         return evidenciaInfoService.find(id);
     }
-
+    @PostMapping()
+    public EvidenciaInfo criar(@RequestBody EvidenciaInfo evidencia) {
+        return evidenciaInfoService.creat(evidencia);
+    }
+    @DeleteMapping("/{id}")
+    public EvidenciaInfo deletar(@PathVariable(value = "id") Integer id) {
+        return evidenciaInfoService.Delete(id);
+    }
     @GetMapping
     public List<EvidenciaInfo> InfoLista() {
         return evidenciaInfoService.findAll();
