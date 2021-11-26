@@ -1,5 +1,6 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,13 +25,27 @@ public class Aula{
     @Column(nullable = false, name = "horas_aprendizagem")
     private Double horasAprendizagem;
     @ManyToOne
-    @JoinColumn(name = "Agendamento")
+    @JoinColumn(name = "agendamento")
     private Agendamento agendamento;
     @OneToMany
     @JoinTable(name="presenca",
         joinColumns={@JoinColumn(name="aula")},
         inverseJoinColumns={@JoinColumn(name="aluno")})
     private List<Aluno> alunosPresentes;
+   
+    @OneToMany
+    @JoinTable(name="arquivos_aula",
+        joinColumns={@JoinColumn(name="aula")},
+        inverseJoinColumns={@JoinColumn(name="Arquivo")})
+    private List<Arquivo> arquivos;
+    
+    
+    public List<Aluno> getAlunosPresentes() {
+        return alunosPresentes;
+    }
+    public void setAlunosPresentes(List<Aluno> alunosPresentes) {
+        this.alunosPresentes = alunosPresentes;
+    }
     
     public Integer getId() {
         return id;
@@ -62,14 +77,5 @@ public class Aula{
     public void setAgendamento(Agendamento agendamento) {
         this.agendamento = agendamento;
     }
-    // public List<Aluno> getAlunosPresentes() {
-    //     return alunosPresentes;
-    // }
-    // public void setAlunosPresentes(List<Aluno> alunosPresentes) {
-    //     this.alunosPresentes = alunosPresentes;
-    // }
-
-    
-    
     
 }
