@@ -32,7 +32,7 @@ public class AgendamentoController {
     @Autowired
     AgendamentoRepository agendamentoRepository;
 
-    @PostMapping("professor")
+    @PostMapping("/professor")
     public ResponseEntity<?> cadastrarRecorenteProfessor(
         @RequestBody Agendamento agendamento,
         @RequestParam(required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dataInicio,
@@ -94,7 +94,7 @@ public class AgendamentoController {
         }
     }
 
-    @PostMapping("aluno")
+    @PostMapping("/aluno")
     public ResponseEntity<Agendamento> cadastrarAluno(@RequestBody Agendamento agendamento) {
         Agendamento agendamentoSalvo;
 
