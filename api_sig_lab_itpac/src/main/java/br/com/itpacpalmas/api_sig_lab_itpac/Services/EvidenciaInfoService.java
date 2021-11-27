@@ -56,6 +56,7 @@ public class EvidenciaInfoService {
         aula.setNomeAtividade(info.getNomeAtividade());
         aula.setHorasAprendizagem(info.getHorasAprendizagem());
         aula.setCodigo(info.getCodigo());
+        aula.setId((Integer)info.getId());
         return aula;
     }
     public List<EvidenciaInfo> ConvertList(List<Aula> aulas) {

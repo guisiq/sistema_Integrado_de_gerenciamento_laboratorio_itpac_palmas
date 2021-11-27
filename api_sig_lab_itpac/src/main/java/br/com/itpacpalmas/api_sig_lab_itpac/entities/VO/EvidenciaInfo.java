@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EvidenciaInfo {
     
-    private long id;
+    private Integer id;
     private Integer idagendamento;
     private String sala;
     @JsonFormat(pattern = "dd-MM-yyyy", timezone = "GMT-3")
@@ -20,11 +20,15 @@ public class EvidenciaInfo {
     
     //#region ------ Getter e Setter
 
-    public long getId() {
-        return id;
-    }
+    
     public String getCodigo() {
         return codigo;
+    }
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
     }
     public void setCodigo(String codigo) {
         this.codigo = codigo;
@@ -53,9 +57,7 @@ public class EvidenciaInfo {
     public void setIdagendamento(Integer idagendamento) {
         this.idagendamento = idagendamento;
     }
-    public void setId(long id) {
-        this.id = id;
-    }
+    
     public String getSala() {
         return sala;
     }

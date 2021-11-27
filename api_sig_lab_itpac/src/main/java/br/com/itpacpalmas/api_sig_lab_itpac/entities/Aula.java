@@ -22,7 +22,7 @@ public class Aula{
     private String codigo;
     @Column(nullable = false, name = "nome_atividade")
     private String nomeAtividade;
-    @Column(nullable = false, name = "horas_aprendizagem")
+    @Column(name = "horas_aprendizagem")
     private Double horasAprendizagem;
     @ManyToOne
     @JoinColumn(name = "agendamento")
