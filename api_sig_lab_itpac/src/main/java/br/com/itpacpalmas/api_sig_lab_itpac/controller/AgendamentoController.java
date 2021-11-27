@@ -74,7 +74,8 @@ public class AgendamentoController {
                         
                         aux.setAtivo(agendamento.getAtivo());
                         aux.setData(dataInicio);
-                        aux.setHorario(agendamento.getHorario());
+                        aux.setHoraInicio(agendamento.getHoraInicio());
+                        aux.setHoraFim(agendamento.getHoraFim());
                         aux.setManual(agendamento.getManual());
                         aux.setMotivo(agendamento.getMotivo());
                         aux.setProfessor(agendamento.getProfessor());
@@ -143,7 +144,8 @@ public class AgendamentoController {
                         // criando outro objeto aparti da referencia 
                         aux.setAtivo(agendamento.getAtivo());
                         aux.setData(dataInicio);
-                        aux.setHorario(agendamento.getHorario());
+                        aux.setHoraInicio(agendamento.getHoraInicio());
+                        aux.setHoraFim(agendamento.getHoraFim());
                         aux.setManual(agendamento.getManual());
                         aux.setMotivo(agendamento.getMotivo());
                         aux.setProfessor(agendamento.getProfessor());
