@@ -41,8 +41,9 @@ public class Agendamento {
     private Subgrupo subgrupo; 
     @JsonFormat(pattern = "dd-MM-yyyy", timezone = "GMT-3")
     private LocalDate data;
+    private String horario;
 
-    private boolean ativo ;
+    private boolean ativo;
 
     public Integer getId() {
         return id;
@@ -91,6 +92,12 @@ public class Agendamento {
     }
     public void setData(LocalDate data) {
         this.data = data;
+    }
+    public String getHorario() {
+        return horario;
+    }
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
     public boolean getAtivo() {
         return ativo;

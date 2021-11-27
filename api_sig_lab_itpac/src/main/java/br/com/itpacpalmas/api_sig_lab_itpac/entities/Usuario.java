@@ -38,7 +38,6 @@ public class Usuario {
         this.pessoa = pessoa;
     }
     
-    
     public String getUserName() {
         return userName;
     }
