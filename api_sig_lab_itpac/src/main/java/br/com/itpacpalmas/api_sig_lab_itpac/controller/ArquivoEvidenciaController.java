@@ -30,9 +30,14 @@ public class ArquivoEvidenciaController {
 	private ArquivoEvidenciaService servises;
     
     @GetMapping()
-    public  ResponseEntity<List<ArquivoResponseVO>> getInfo(@RequestParam("idEvidencia")int idEvidencia,@RequestParam("idArquivo")int idArquivo) {   
-        System.out.println();
-        return ResponseEntity.ok().body(servises.buscarTodosInfo());
+    public  ResponseEntity<?> getInfo(@RequestParam(required = false )Integer idEvidencia,@RequestParam(required = false )Integer idArquivo) {   
+        
+        if (idEvidencia != null) {
+            return ResponseEntity.ok().body(servises.getByEvidencia(idEvidencia));
+        } else if(idArquivo != null) {
+            return ResponseEntity.ok().body(servises.buscarbyIdInfo(idArquivo));    
+        }else
+            return ResponseEntity.ok().body(servises.buscarTodosInfo());
     }
     
     

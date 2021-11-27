@@ -40,6 +40,12 @@ public class Aula{
     private List<Arquivo> arquivos;
     
     
+    public List<Arquivo> getArquivos() {
+        return arquivos;
+    }
+    public void setArquivos(List<Arquivo> arquivos) {
+        this.arquivos = arquivos;
+    }
     public List<Aluno> getAlunosPresentes() {
         return alunosPresentes;
     }

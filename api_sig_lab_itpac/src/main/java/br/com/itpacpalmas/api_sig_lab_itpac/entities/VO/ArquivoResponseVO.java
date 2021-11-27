@@ -84,6 +84,7 @@ public class ArquivoResponseVO implements Serializable{
 	}
 	//#endregion
 	public static ArquivoResponseVO convert(Arquivo Arquivo,String fileDownloadUri) {
+		
 		ArquivoResponseVO retorno = new ArquivoResponseVO();
 		retorno.fileName = Arquivo.getCaminho();
 		retorno.fileDownloadUri = fileDownloadUri +Arquivo.getCaminho();
