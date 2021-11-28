@@ -50,13 +50,13 @@ public class EvidenciaInfoService {
         Aula aula = new Aula();
         //DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         //info.setId(aula.getId());
-        var agendamento = new Agendamento();
+        Agendamento agendamento = new Agendamento();
         agendamento.setId(info.getIdagendamento());
         aula.setAgendamento(agendamento);
         aula.setNomeAtividade(info.getNomeAtividade());
         aula.setHorasAprendizagem(info.getHorasAprendizagem());
         aula.setCodigo(info.getCodigo());
-        aula.setId((Integer)info.getId());
+        aula.setId(info.getId());
         return aula;
     }
     public List<EvidenciaInfo> ConvertList(List<Aula> aulas) {

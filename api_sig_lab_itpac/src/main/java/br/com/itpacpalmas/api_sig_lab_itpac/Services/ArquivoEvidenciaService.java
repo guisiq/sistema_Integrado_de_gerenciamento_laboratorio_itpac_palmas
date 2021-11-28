@@ -21,12 +21,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.config.FileStorageConfig;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Arquivo;
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Aula;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Manual;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ArquivoResponseVO;
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.FileStorageException;
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.MyFileNotFoundException;
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.ResourceNotFoundException;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.ArquivoRepository;
+import br.com.itpacpalmas.api_sig_lab_itpac.repository.AulaRepository;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.ManualRepository;
 
 @Service
@@ -34,7 +36,9 @@ public class ArquivoEvidenciaService {
 
 	private final Path fileStorageLocation;
 	@Autowired
-    ArquivoRepository repo;
+    ArquivoRepository ArquivoRepo;
+	@Autowired
+    AulaRepository aulaRepo;
 	
 	@Autowired
 	public ArquivoEvidenciaService(FileStorageConfig fileStorageConfig) {
@@ -85,18 +89,18 @@ public class ArquivoEvidenciaService {
 
 	
     public List<ArquivoResponseVO> buscarTodosInfo() {
-		return ArquivoResponseVO.convertList(repo.findAll(),fileStorageLocation.toString()); 
+		return ArquivoResponseVO.convertList(ArquivoRepo.findAll(),fileStorageLocation.toString()); 
     }
     
     public ArquivoResponseVO buscarbyIdInfo(int Id) {
         //return ArquivoResponseVO.convert(repo.findById(Id).orElseThrow()); 
-        return ArquivoResponseVO.convert(repo.findById(Id).orElse(null),fileStorageLocation.toString()); 
+        return ArquivoResponseVO.convert(ArquivoRepo.findById(Id).orElse(null),fileStorageLocation.toString()); 
         
     }
 
 
 	public ArquivoResponseVO uploadFile(MultipartFile file,int id) {
-		Arquivo getArquivo = repo.save(new Arquivo());
+		Arquivo getArquivo = ArquivoRepo.save(new Arquivo());
 		String fileName = this.storeFile(file,getArquivo.getId(),id);
 		getArquivo.setCaminho(fileName);;
 		
@@ -107,14 +111,17 @@ public class ArquivoEvidenciaService {
 		
 		ArquivoResponseVO retorno = new ArquivoResponseVO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
 		retorno.setId(getArquivo.getId());
-		repo.save(getArquivo);
+		getArquivo = ArquivoRepo.save(getArquivo);
+		Aula aula = aulaRepo.findById(id).get();
+		aula.getArquivos().add(getArquivo);
+		aulaRepo.save(aula);
 		return retorno;
 	
 	}
 
 	
 	public ResponseEntity<Resource> downloadFile(int id, HttpServletRequest request) {
-		String fileName = repo.findById(id).get().getCaminho();
+		String fileName = ArquivoRepo.findById(id).get().getCaminho();
 		Resource resource = this.loadFileAsResource(fileName);
 		
 		String contentType = null;
@@ -137,13 +144,24 @@ public class ArquivoEvidenciaService {
 	}
 
     public ArquivoResponseVO update(int id ,String descricao ) {
-		var retorno = repo.findById(id)
+		Arquivo retorno = ArquivoRepo.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("entidade nao encontrada no banco "));
-		repo.save(retorno);
+		ArquivoRepo.save(retorno);
 		return ArquivoResponseVO.convert(retorno,fileStorageLocation.toString());
     }
 
 	public void delete(int id) {
-		repo.deleteById(id);
+		ArquivoRepo.deleteById(id);
 	}
+
+	public List<ArquivoResponseVO> getByEvidencia(int id) {
+
+
+
+		return ArquivoResponseVO.convertList(aulaRepo.findById(id).get().getArquivos(),fileStorageLocation.toString());
+	}
+
+    public List<ArquivoResponseVO> getById() {
+        return null;
+    }
 }

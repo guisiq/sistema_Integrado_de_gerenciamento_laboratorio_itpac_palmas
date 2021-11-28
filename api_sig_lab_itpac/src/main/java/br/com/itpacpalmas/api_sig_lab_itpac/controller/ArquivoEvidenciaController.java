@@ -30,7 +30,9 @@ public class ArquivoEvidenciaController {
 	private ArquivoEvidenciaService servises;
     
     @GetMapping()
-    public  ResponseEntity<?> getInfo(@RequestParam(required = false )Integer idEvidencia,@RequestParam(required = false )Integer idArquivo) {   
+    public  ResponseEntity<?> getInfo(
+        @RequestParam(required = false )Integer idEvidencia,
+        @RequestParam(required = false )Integer idArquivo) {   
         
         if (idEvidencia != null) {
             return ResponseEntity.ok().body(servises.getByEvidencia(idEvidencia));
