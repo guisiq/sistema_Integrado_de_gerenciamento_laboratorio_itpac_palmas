@@ -31,9 +31,13 @@ public class ProfessorController {
 @Autowired
 ProfessorRepository professorRepository;
 
-@GetMapping()
-public List<Professor> getAll(){
-    return professorRepository.findAll();
+@GetMapping("getAll/{filtro}")
+public List<Professor> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<Professor> retorno = professorRepository.findAll();
+    if (filtro) {
+        retorno.removeIf(p -> !p.isAtivo()); 
+    }
+    return retorno;
 }
 @GetMapping(value="/{id}")
 public Optional<Professor> getId(@PathVariable (value = "id") int id){
