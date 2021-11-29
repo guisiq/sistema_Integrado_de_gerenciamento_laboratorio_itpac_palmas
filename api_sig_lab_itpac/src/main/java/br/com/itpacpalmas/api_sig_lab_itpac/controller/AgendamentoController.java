@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.repository.AgendamentoRepository;
 
 @RestController
 @RequestMapping(value = "/api/periodo/Agendamentos")
-
+@CrossOrigin
 public class AgendamentoController {
     @Autowired
     AgendamentoRepository agendamentoRepository;

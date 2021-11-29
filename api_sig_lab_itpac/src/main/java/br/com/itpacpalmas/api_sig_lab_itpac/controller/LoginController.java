@@ -3,6 +3,7 @@ package br.com.itpacpalmas.api_sig_lab_itpac.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("api/login")
+@CrossOrigin
 public class LoginController {
     @Autowired
     private UsuarioRepository repo;

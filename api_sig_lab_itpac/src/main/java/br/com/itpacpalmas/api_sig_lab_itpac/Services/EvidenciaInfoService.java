@@ -28,7 +28,7 @@ public class EvidenciaInfoService {
 
     public EvidenciaInfo find(Integer id){
         // EvidenciaInfo info ;
-        Aula aula = repo.getById(id);
+        Aula aula = repo.findById(id).get();
         return convertToInfo(aula);
     }
     public EvidenciaInfo convertToInfo(Aula aula) {
