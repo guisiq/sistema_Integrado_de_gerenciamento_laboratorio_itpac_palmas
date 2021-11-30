@@ -27,6 +27,15 @@ public class AlunoController {
 
 	@Autowired
 	AlunoRepository alunoRepository;
+
+	@GetMapping("getAll/{filtro}")
+public List<Aluno> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<Aluno> retorno = alunoRepository.findAll();
+    if (filtro) {
+        retorno.removeIf(p -> !p.isAtivo()); 
+    }
+    return retorno;
+}
 	
 	
 	@PostMapping

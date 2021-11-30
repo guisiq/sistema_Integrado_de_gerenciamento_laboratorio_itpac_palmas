@@ -26,6 +26,15 @@ public class EvidenciaInfoController {
     @Autowired
     EvidenciaInfoService evidenciaInfoService;
 
+    @GetMapping("getAll/{filtro}")
+public List<EvidenciaInfo> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<EvidenciaInfo> retorno = evidenciainfoRepository.findAll();
+    if (filtro) {
+        retorno.removeIf(p -> !p.isAtivo()); 
+    }
+    return retorno;
+}
+
     @GetMapping("/{id}")
     public EvidenciaInfo Info(@PathVariable(value = "id") int id) {
         return evidenciaInfoService.find(id);

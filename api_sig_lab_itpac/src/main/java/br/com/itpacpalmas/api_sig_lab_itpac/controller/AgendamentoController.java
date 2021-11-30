@@ -33,6 +33,15 @@ public class AgendamentoController {
     @Autowired
     AgendamentoRepository agendamentoRepository;
 
+    @GetMapping("getAll/{filtro}")
+public List<Agendamento> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<Agendamento> retorno = agendamentoRepository.findAll();
+    if (filtro) {
+        retorno.removeIf(p -> !p.getAtivo()); 
+    }
+    return retorno;
+}
+
     @PostMapping("/professor")
     public ResponseEntity<?> cadastrarRecorenteProfessor(
         @RequestBody Agendamento agendamento,

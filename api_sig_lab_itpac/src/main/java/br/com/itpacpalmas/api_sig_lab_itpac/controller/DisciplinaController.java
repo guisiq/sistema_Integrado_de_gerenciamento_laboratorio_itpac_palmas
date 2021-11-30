@@ -26,7 +26,16 @@ public class DisciplinaController {
     private DisciplinaService service;
     
     @Autowired
-    private DisciplinaRepository repo;
+    private DisciplinaRepository disciplinaRepository;
+
+    @GetMapping("getAll/{filtro}")
+public List<Disciplina> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<Disciplina> retorno = disciplinaRepository.findAll();
+    if (filtro) {
+        retorno.removeIf(p -> !p.isAtivo()); 
+    }
+    return retorno;
+}
     
     @GetMapping(value = "/{id}")
     public Disciplina find(@PathVariable Integer id){

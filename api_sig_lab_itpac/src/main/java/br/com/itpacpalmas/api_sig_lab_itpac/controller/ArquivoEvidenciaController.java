@@ -28,6 +28,8 @@ import br.com.itpacpalmas.api_sig_lab_itpac.services.ManualService;
 public class ArquivoEvidenciaController {
     @Autowired
 	private ArquivoEvidenciaService servises;
+
+    
     
     @GetMapping()
     public  ResponseEntity<?> getInfo(
