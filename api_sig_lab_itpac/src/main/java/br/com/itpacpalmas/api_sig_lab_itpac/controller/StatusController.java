@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,7 +18,7 @@ import br.com.itpacpalmas.api_sig_lab_itpac.repository.StatusRepository;
 
 @RestController
 @RequestMapping(value = "/api/status")
-
+@CrossOrigin
 public class StatusController {
     @Autowired
     StatusRepository statusRepository ;
@@ -38,7 +39,7 @@ public class StatusController {
     public ResponseEntity<Status> atualizar(@RequestBody Status status) {
         Status statusSalvo;
         try {
-            
+           
             statusSalvo = statusRepository.save(status);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

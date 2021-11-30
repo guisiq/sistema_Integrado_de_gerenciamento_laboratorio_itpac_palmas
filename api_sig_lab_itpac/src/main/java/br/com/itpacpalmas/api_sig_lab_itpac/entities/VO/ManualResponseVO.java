@@ -18,6 +18,7 @@ public class ManualResponseVO implements Serializable{
 	private String fileDownloadUri;
 	private String Descricao;
 	private int id;
+	private boolean ativo;
 
 
 	
@@ -35,6 +36,14 @@ public class ManualResponseVO implements Serializable{
 
 	public String getDescricao() {
 		return Descricao;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	public void setDescricao(String descricao) {
@@ -88,6 +97,7 @@ public class ManualResponseVO implements Serializable{
 		retorno.fileDownloadUri = "/api/file/downloadFile/"+manual.getDocumento();
 		retorno.Descricao = manual.getDescricao();
 		retorno.id = manual.getId();
+		retorno.ativo = manual.isAtivo();
 		return retorno ;
 	}
 
@@ -105,6 +115,7 @@ public class ManualResponseVO implements Serializable{
         Manual retorno = new Manual();
 		retorno.setDescricao(this.Descricao);
 		retorno.setDocumento(this.fileName);
+		retorno.setAtivo(this.ativo);;
 		return retorno;
     }
 }

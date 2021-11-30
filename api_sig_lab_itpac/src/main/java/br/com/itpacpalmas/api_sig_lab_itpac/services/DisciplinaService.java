@@ -50,5 +50,16 @@ public class DisciplinaService {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	    }
     }
+    public ResponseEntity<Disciplina> ativar(Integer id){
+        try{
+            Disciplina disciplina = repo.findById(id).get();
+			disciplina.setAtivo(true);
+			repo.save(disciplina);
+			return ResponseEntity.status(HttpStatus.OK).body(disciplina);
+		}catch(Exception e){
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	    }
+    }
 }
 

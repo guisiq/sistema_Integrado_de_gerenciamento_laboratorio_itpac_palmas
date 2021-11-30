@@ -1,8 +1,12 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +38,30 @@ public class Agendamento {
     @ManyToOne
     @JoinColumn(name = "subgrupo") 
     private Subgrupo subgrupo; 
-    private Date data;
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "GMT-3")
+    private LocalDate data;
+    private LocalTime horaInicio;
+    private LocalDate horaFim;
+
+
+    private boolean ativo;
+
+    public LocalTime getHoraInicio() {
+        return this.horaInicio;
+    }
+
+    public void setHoraInicio(LocalTime horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public LocalDate getHoraFim() {
+        return this.horaFim;
+    }
+
+    public void setHoraFim(LocalDate horaFim) {
+        this.horaFim = horaFim;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -77,11 +104,23 @@ public class Agendamento {
     public void setSubgrupo(Subgrupo subgrupo) {
         this.subgrupo = subgrupo;
     }
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
+    }
+    public boolean getAtivo() {
+        return ativo;
+    }
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     } 
     
 }
+/*"manual" : {"id" : 1},
+"professor" : {"id" : 1},
+"sala" : {"id" : 1},
+"status" : {"id" : 1},
+"subgrupo" : {"id" : 1},
+"data" : {"id" : 1},*/

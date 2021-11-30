@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 
@@ -25,6 +27,7 @@ public class Subgrupo {
 	@Column(nullable = false, length = 60)
 	private String nome;
 	
+	private Boolean ativo;
 	
 	@ManyToOne
 	@JoinColumn(name = "professor")
@@ -65,7 +68,6 @@ public class Subgrupo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-/*
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -73,7 +75,7 @@ public class Subgrupo {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-*/
+
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}
@@ -81,5 +83,12 @@ public class Subgrupo {
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
-	
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
 }

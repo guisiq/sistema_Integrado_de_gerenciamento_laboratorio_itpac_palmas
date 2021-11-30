@@ -15,11 +15,32 @@ public class Manual {
     private Integer id;
     private String descricao;
     private String documento;
+    @Column(columnDefinition = "boolean default false")
+    private boolean ativo;
 
 
 //-------------Getter e Setter
+    
     public Integer getId() {
         return this.id;
+    }
+
+    public Manual() {
+    }
+
+    public Manual(Integer id, String descricao, String documento, boolean ativo) {
+        this.id = id;
+        this.descricao = descricao;
+        this.documento = documento;
+        this.ativo = ativo;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
     public void setId(Integer id) {

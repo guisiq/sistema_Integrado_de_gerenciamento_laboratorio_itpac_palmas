@@ -12,11 +12,11 @@ public class Status {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="idstatus")
-    private Long id;
+    private Integer id;
 
     private String descricao;
 
-    public Status(Long id, String descricao) {
+    public Status(Integer id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
@@ -25,11 +25,11 @@ public class Status {
 
     }
     
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -1,0 +1,24 @@
+@startuml
+    class evidenciaInfo{
+        id:long
+        sala:String
+        data:String
+        subgrupo:String
+        presencaUrl:String
+        arquivosUrl:String
+    }
+    class precenca{
+        id:long
+        listaPresenca : List<presencaAluno>
+    }
+    class presencaAluno{
+        id:long
+        nome:String
+        presente:bool
+    }
+    class ArquivoInfo{
+        id:long
+        descricao :String
+        fileDownloadUri:String
+    }
+@enduml

@@ -1,11 +1,15 @@
 package br.com.itpacpalmas.api_sig_lab_itpac.entities;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.GenerationType;
@@ -22,11 +26,22 @@ public class Disciplina {
     @JoinColumn(name = "periodo")
     private Periodo periodo;
 
+    @ManyToMany
+    @JoinTable(name="diciplina_professor",
+	        joinColumns={@JoinColumn(name="diciplina")},
+	        inverseJoinColumns={@JoinColumn(name="professor")})
+	private List<Professor> professores;
     private String nome;
     private String apelido;
     private Boolean ativo;
     
     
+    public List<Professor> getProfessores() {
+        return professores;
+    }
+    public void setProfessores(List<Professor> professores) {
+        this.professores = professores;
+    }
     public Periodo getPeriodo() {
         return periodo;
     }

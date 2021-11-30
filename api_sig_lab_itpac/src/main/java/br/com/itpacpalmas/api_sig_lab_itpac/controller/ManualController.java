@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ManualResponseVO;
-import br.com.itpacpalmas.api_sig_lab_itpac.services.FileStorageService;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.ManualService;
 
 
 // https://www.youtube.com/watch?v=DtC_KfU6b1o
-@CrossOrigin
 @RestController
 @RequestMapping("api/manual")
+@CrossOrigin
 public class ManualController {
     @Autowired
-	private FileStorageService servises;
+	private ManualService servises;
     
     @GetMapping()
     public  ResponseEntity<List<ManualResponseVO>> getInfo() {
@@ -49,14 +49,22 @@ public class ManualController {
         return servises.uploadFile(file,descricao);
     }
     
-    @PatchMapping("/{id}/{descricao}")
-    public void update(@PathVariable int id,@PathVariable String descricao) {
-        servises.update(id, descricao);
+    @PatchMapping("/updateDescricao/{id}")
+    public ManualResponseVO update(@PathVariable int id,@RequestParam("descricao")String descricao) {
+        return servises.update(id, descricao);
     }
 
-    @DeleteMapping("/{id}")
-    public void delet(@PathVariable int id) {
-       servises.delete(id); 
+    @PatchMapping("/desativar/{id}")
+    public ManualResponseVO desativar(@PathVariable int id) {
+        return servises.desativar(id);
+    
     }
+
+    @PatchMapping("/ativar/{id}")
+    public ManualResponseVO ativar(@PathVariable int id) {
+        return servises.ativar(id);
+    }
+
+   
 
 }
