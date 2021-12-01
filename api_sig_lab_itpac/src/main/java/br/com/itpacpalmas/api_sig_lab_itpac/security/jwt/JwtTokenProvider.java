@@ -25,28 +25,28 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class JwtTokenProvider {
-	
+
 	@Value("${security.jwt.token.secret-key:secret}")
 	private String secretKey = "secret";
-	
+
 	@Value("${security.jwt.token.expire-length:60000}")
-	private long validityInMilliseconds = 36000000; //1h
-	
+	private long validityInMilliseconds = 360000000; // 1h
+
 	@Autowired
 	private UserServices userDetailsService;
-	
+
 	@PostConstruct
 	protected void init() {
 		secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
 	}
-	
+
 	public String createToken(String username, List<String> roles) {
 		Claims claims = Jwts.claims().setSubject(username);
 		claims.put("roles", roles);
-		
+
 		Date now = new Date();
 		Date validity = new Date(now.getTime() + validityInMilliseconds);
-		
+
 		return Jwts.builder()
 				.setClaims(claims)
 				.setIssuedAt(now)
@@ -54,24 +54,24 @@ public class JwtTokenProvider {
 				.signWith(SignatureAlgorithm.HS256, secretKey)
 				.compact();
 	}
-	
+
 	public Authentication getAuthentication(String token) {
 		UserDetails userDetails = this.userDetailsService.loadUserByUsername(getUsername(token));
-		return new UsernamePasswordAuthenticationToken(userDetails,"", userDetails.getAuthorities());
+		return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
 	}
 
 	private String getUsername(String token) {
 		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
 	}
-	
+
 	public String resolveToken(HttpServletRequest req) {
 		String bearerToken = req.getHeader("Authorization");
 		if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
 			return bearerToken.substring(7, bearerToken.length());
-		}		
+		}
 		return null;
 	}
-	
+
 	public boolean validateToken(String token) {
 		try {
 			Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
