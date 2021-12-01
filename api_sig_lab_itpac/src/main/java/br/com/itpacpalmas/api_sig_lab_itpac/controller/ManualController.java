@@ -31,8 +31,8 @@ public class ManualController {
 	private ManualService services;
 
     @GetMapping("getAll/{filtro}")
-public List<Manual> getAll(@PathVariable (value = "filtro") boolean filtro){
-    List<Manual> retorno = manualRepository.findAll();
+public List<ManualResponseVO> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<ManualResponseVO> retorno = services.buscarTodosInfo();
     if (filtro) {
         retorno.removeIf(p -> !p.isAtivo()); 
     }
@@ -43,38 +43,38 @@ public List<Manual> getAll(@PathVariable (value = "filtro") boolean filtro){
     
     @GetMapping()
     public  ResponseEntity<List<ManualResponseVO>> getInfo() {
-        return ResponseEntity.ok().body(servises.buscarTodosInfo());
+        return ResponseEntity.ok().body(services.buscarTodosInfo());
     }
     
     @GetMapping("{id}")
     public ResponseEntity<ManualResponseVO> getInfoById(@PathVariable int id) {
-        return ResponseEntity.ok().body(servises.buscarbyIdInfo(id));
+        return ResponseEntity.ok().body(services.buscarbyIdInfo(id));
     }
     
     @GetMapping("/doc/{id}")
     public ResponseEntity<?> getDocById(@PathVariable int id, HttpServletRequest request) {
-        return servises.downloadFile(id, request);
+        return services.downloadFile(id, request);
     }
     
     @PostMapping
 	public ManualResponseVO uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("descricao") String descricao) {
-        return servises.uploadFile(file,descricao);
+        return services.uploadFile(file,descricao);
     }
     
     @PatchMapping("/updateDescricao/{id}")
     public ManualResponseVO update(@PathVariable int id,@RequestParam("descricao")String descricao) {
-        return servises.update(id, descricao);
+        return services.update(id, descricao);
     }
 
     @PatchMapping("/desativar/{id}")
     public ManualResponseVO desativar(@PathVariable int id) {
-        return servises.desativar(id);
+        return services.desativar(id);
     
     }
 
     @PatchMapping("/ativar/{id}")
     public ManualResponseVO ativar(@PathVariable int id) {
-        return servises.ativar(id);
+        return services.ativar(id);
     }
 
    

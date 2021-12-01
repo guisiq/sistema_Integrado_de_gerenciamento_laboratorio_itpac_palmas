@@ -39,7 +39,7 @@ public List<Disciplina> getAll(@PathVariable (value = "filtro") boolean filtro){
     
     @GetMapping(value = "/{id}")
     public Disciplina find(@PathVariable Integer id){
-        Disciplina obj = repo.findById(id).get();
+        Disciplina obj = service.find(id);
         return obj;
     }
     

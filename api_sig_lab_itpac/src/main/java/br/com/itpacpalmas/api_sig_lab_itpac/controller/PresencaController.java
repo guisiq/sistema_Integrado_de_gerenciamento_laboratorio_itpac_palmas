@@ -28,14 +28,6 @@ public class PresencaController {
 	@Autowired
 	PresencaService service;
 
-	@GetMapping("getAll/{filtro}")
-public List<Presenca> getAll(@PathVariable (value = "filtro") boolean filtro){
-    List<Presenca> retorno = presencaRepository.findAll();
-    if (filtro) {
-        retorno.removeIf(p -> !p.isAtivo()); 
-    }
-    return retorno;
-}
 	
 	@PostMapping()
 	public void add(@RequestBody Presenca presenca) {
