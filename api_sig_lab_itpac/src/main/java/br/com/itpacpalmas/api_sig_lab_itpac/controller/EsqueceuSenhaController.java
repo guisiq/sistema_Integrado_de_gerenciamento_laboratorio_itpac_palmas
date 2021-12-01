@@ -5,33 +5,29 @@ import java.time.LocalDateTime;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.itpacpalmas.api_sig_lab_itpac.services.EmailService;
-import br.com.itpacpalmas.api_sig_lab_itpac.entities.Pessoa;
+import br.com.itpacpalmas.api_sig_lab_itpac.Services.EmailService;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.RecuperarSenha;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Usuario;
-import br.com.itpacpalmas.api_sig_lab_itpac.repository.PessoaRepository;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.RecuperarSenhaRepository;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("api/forgotpass")
+@RequestMapping(value="api/forgotpass")
 public class EsqueceuSenhaController {
 	
 @Autowired
 UsuarioRepository usuarioRepository;
 @Autowired
-PessoaRepository pessoaRepository;
-@Autowired
 RecuperarSenhaRepository recuperarSenhaRepository;
 
 	@GetMapping
 	public boolean enviarEmail(@RequestParam(name = "email") String email) {
-//		Pessoa pessoa = pessoaRepository.findByEmail(email);
 		Usuario usuario = null;
 		try {
 			usuario = usuarioRepository.findByEmail(email);
@@ -61,6 +57,31 @@ RecuperarSenhaRepository recuperarSenhaRepository;
 			e.printStackTrace();
 			return false;
 		}
+		
+	}
+	
+	@GetMapping(value="/alterpass")
+	public Usuario alterarSenha(@RequestParam String codigo,@RequestParam String senha) {
+	
+		RecuperarSenha obj = recuperarSenhaRepository.findByCodigo(codigo);
+		if(obj == null || obj.getDataLimite().isBefore(LocalDateTime.now()) || obj.getUtilizado() == true) {
+			
+			return null;
+		}
+		else {
+			Usuario usu = obj.getUsuario();
+			System.out.println(usu.getPassword());
+			usu.setPassword(senha);
+			obj.setUtilizado(true);
+			Usuario teste =usuarioRepository.save(usu);
+			System.out.println(teste.getPassword());
+			recuperarSenhaRepository.save(obj);
+			
+				
+			return teste;
+		}
+		
+		
 		
 	}
 

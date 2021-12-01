@@ -43,6 +43,9 @@ public class AlunoController {
 		 usu.setUserName(aluno.getPessoa().getCpf());
 		 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(16);
 		 usu.setPassword(bCryptPasswordEncoder.encode("afya"+aluno.getPessoa().getCpf()));
+		 usu.setAccountNonExpired(true);
+		 usu.setAccountNonLocked(true);
+		 usu.setCredentialsNonExpired(true);
 		 usuarioRepository.save(usu);
 		 
 	  return alunoRetorno;	

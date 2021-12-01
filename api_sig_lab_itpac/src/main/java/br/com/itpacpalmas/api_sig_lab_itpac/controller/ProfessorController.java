@@ -50,6 +50,9 @@ public Professor add(@RequestBody Professor professor){
 	 usu.setUserName(professor.getPessoa().getCpf());
 	 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(16);
 	 usu.setPassword(bCryptPasswordEncoder.encode("afya"+professor.getPessoa().getCpf()));
+	 usu.setAccountNonExpired(true);
+	 usu.setAccountNonLocked(true);
+	 usu.setCredentialsNonExpired(true);
 	 usuarioRepository.save(usu);
     return professorRetorno;
 }
