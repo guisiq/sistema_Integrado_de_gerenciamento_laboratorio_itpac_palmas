@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.itpacpalmas.api_sig_lab_itpac.Services.EvidenciaInfoService;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.EvidenciaInfoService;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.EvidenciaInfo;
 
 @RestController

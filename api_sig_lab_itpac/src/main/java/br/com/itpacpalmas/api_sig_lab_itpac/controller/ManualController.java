@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.itpacpalmas.api_sig_lab_itpac.Services.ManualService;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.ManualService;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.ManualResponseVO;
 
 

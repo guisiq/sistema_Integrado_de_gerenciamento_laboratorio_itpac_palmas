@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.itpacpalmas.api_sig_lab_itpac.Services.EmailService;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.EmailService;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Pessoa;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.RecuperarSenha;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Usuario;

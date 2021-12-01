@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.Services;
+package br.com.itpacpalmas.api_sig_lab_itpac.services;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.itpacpalmas.api_sig_lab_itpac.Services.DisciplinaService;
+import br.com.itpacpalmas.api_sig_lab_itpac.services.DisciplinaService;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Disciplina;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.DisciplinaRepository;
 @CrossOrigin

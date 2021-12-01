@@ -56,10 +56,6 @@ public class RecuperarSenhaController {
 		
 	}
 
-	public void limpar() {
-		setSenha(null);
-		setCodigo(null);
-	}
 
 	public String getCodigo() {
 		return codigo;
