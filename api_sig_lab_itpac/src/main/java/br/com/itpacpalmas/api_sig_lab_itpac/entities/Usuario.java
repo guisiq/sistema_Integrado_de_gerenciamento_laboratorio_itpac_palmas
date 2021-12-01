@@ -22,11 +22,20 @@ public class Usuario {
     private String password;
     @Column( name = "login")
     private String userName;
-    
+    private boolean ativo ;
+
     @OneToOne
     @JoinColumn(name ="pessoa")
     private Pessoa pessoa;
-
+    
+    
+	
+	public boolean isAtivo() {
+		return ativo;
+	}
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
 
     public Integer getId() {
         return id;
