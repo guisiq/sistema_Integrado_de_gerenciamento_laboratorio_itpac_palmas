@@ -43,4 +43,9 @@ public class EvidenciaInfoController {
     public List<EvidenciaInfo> InfoLista() {
         return evidenciaInfoService.findAll();
     }
+    @PutMapping
+    public EvidenciaInfo put(@RequestBody EvidenciaInfo evidencia) {
+        return evidenciaInfoService.Alter(evidencia);
+    }
+    
 }
