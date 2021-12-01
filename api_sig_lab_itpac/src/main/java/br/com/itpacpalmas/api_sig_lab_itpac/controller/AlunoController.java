@@ -6,7 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,7 +41,8 @@ public class AlunoController {
 		 Usuario usu = new Usuario();
 		 usu.setPessoa(alunoRetorno.getPessoa());
 		 usu.setUserName(aluno.getPessoa().getCpf());
-		 usu.setPassword("afya"+aluno.getPessoa().getCpf());
+		 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(16);
+		 usu.setPassword(bCryptPasswordEncoder.encode("afya"+aluno.getPessoa().getCpf()));
 		 usuarioRepository.save(usu);
 		 
 	  return alunoRetorno;	

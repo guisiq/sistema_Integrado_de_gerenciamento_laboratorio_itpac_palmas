@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Professor;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Usuario;
+import br.com.itpacpalmas.api_sig_lab_itpac.exception.ResourceNotFoundException;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.ProfessorRepository;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.UsuarioRepository;
-import br.com.itpacpalmas.api_sig_lab_itpac.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping(value = "/api/professores")
@@ -42,10 +42,21 @@ public class ProfessorController {
         return retorno;
     }
 
-    @GetMapping(value = "/{id}")
-    public Optional<Professor> getId(@PathVariable(value = "id") int id) {
-        return professorRepository.findById(id);
-    }
+@PostMapping()
+public Professor add(@RequestBody Professor professor){
+	 Professor professorRetorno = professorRepository.save(professor);
+	 Usuario usu = new Usuario();
+	 usu.setPessoa(professorRetorno.getPessoa());
+	 usu.setUserName(professor.getPessoa().getCpf());
+	 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(16);
+	 usu.setPassword(bCryptPasswordEncoder.encode("afya"+professor.getPessoa().getCpf()));
+	 usuarioRepository.save(usu);
+    return professorRetorno;
+}
+@PutMapping()
+public Professor alter(@RequestBody Professor professor){
+    return professorRepository.save(professor);
+}
 
     @PostMapping()
     public Professor add(@RequestBody Professor professor) {
