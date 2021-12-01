@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.services;
+package br.com.itpacpalmas.api_sig_lab_itpac.Services;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

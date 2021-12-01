@@ -15,8 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import br.com.itpacpalmas.api_sig_lab_itpac.Services.UserServices;
 import br.com.itpacpalmas.api_sig_lab_itpac.exception.*;
-import br.com.itpacpalmas.api_sig_lab_itpac.services.UserServices;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;

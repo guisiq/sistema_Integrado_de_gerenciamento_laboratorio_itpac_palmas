@@ -1,4 +1,4 @@
-package br.com.itpacpalmas.api_sig_lab_itpac.services;
+package br.com.itpacpalmas.api_sig_lab_itpac.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

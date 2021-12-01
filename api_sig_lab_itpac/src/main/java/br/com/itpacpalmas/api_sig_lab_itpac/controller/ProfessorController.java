@@ -58,21 +58,7 @@ public Professor alter(@RequestBody Professor professor){
     return professorRepository.save(professor);
 }
 
-    @PostMapping()
-    public Professor add(@RequestBody Professor professor) {
-        Professor professorRetorno = professorRepository.save(professor);
-        Usuario usu = new Usuario();
-        usu.setPessoa(professorRetorno.getPessoa());
-        usu.setUserName(professor.getPessoa().getCpf());
-        usu.setPassword("afya" + professor.getPessoa().getCpf());
-        usuarioRepository.save(usu);
-        return professorRetorno;
-    }
-
-    @PutMapping()
-    public Professor alter(@RequestBody Professor professor) {
-        return professorRepository.save(professor);
-    }
+ 
 
     @PatchMapping(value = "/desativar/{id}")
     public ResponseEntity<Professor> disable(@PathVariable(value = "id") Integer id) {
