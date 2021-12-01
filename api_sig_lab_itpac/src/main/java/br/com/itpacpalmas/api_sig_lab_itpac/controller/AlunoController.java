@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Aluno;
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Usuario;
 import br.com.itpacpalmas.api_sig_lab_itpac.repository.AlunoRepository;
+import br.com.itpacpalmas.api_sig_lab_itpac.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("api/aluno")
@@ -27,12 +28,29 @@ public class AlunoController {
 
 	@Autowired
 	AlunoRepository alunoRepository;
+	@Autowired
+	UsuarioRepository usuarioRepository;
+	
 	
 	
 	@PostMapping
 	public Aluno add(@RequestBody Aluno aluno) {
 		 aluno.setAtivo(true);
-	  return alunoRepository.save(aluno);	
+		 Aluno alunoRetorno = alunoRepository.save(aluno);
+		 Usuario usu = new Usuario();
+		 usu.setPessoa(alunoRetorno.getPessoa());
+		 usu.setUserName(aluno.getPessoa().getCpf());
+		 usu.setPassword("afya"+aluno.getPessoa().getCpf());
+		 usuarioRepository.save(usu);
+		 
+	  return alunoRetorno;	
+	}
+	
+	@GetMapping(value="/usuario")
+	public List<Usuario> getUsu() {
+		
+		return usuarioRepository.findAll();
+		
 	}
 	
 	@GetMapping(value="/{id}")
