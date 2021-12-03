@@ -83,12 +83,13 @@ public class ArquivoResponseVO implements Serializable{
 		this.size = size;
 	}
 	//#endregion
-	public static ArquivoResponseVO convert(Arquivo Arquivo,String fileDownloadUri) {
+	public static ArquivoResponseVO convert(Arquivo arquivo,String fileDownloadUri) {
 		
 		ArquivoResponseVO retorno = new ArquivoResponseVO();
-		retorno.fileName = Arquivo.getCaminho();
-		retorno.fileDownloadUri = fileDownloadUri +Arquivo.getCaminho();
-		retorno.id = Arquivo.getId();
+		retorno.fileName = arquivo.getCaminho();
+		retorno.fileDownloadUri = fileDownloadUri +arquivo.getCaminho();
+		retorno.id = arquivo.getId();
+		retorno.Descricao = arquivo.getDecricao();
 		return retorno ;
 	}
 

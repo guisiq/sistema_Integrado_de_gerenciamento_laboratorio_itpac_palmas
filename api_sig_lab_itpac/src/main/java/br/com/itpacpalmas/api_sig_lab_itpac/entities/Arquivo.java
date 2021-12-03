@@ -6,11 +6,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity()
+
 public class Arquivo {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String Caminho;
+    private String decricao;
+
+
+    
+    public String getDecricao() {
+        return decricao;
+    }
+
+    public void setDecricao(String decricao) {
+        this.decricao = decricao;
+    }
 
     /**
      *

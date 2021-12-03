@@ -51,8 +51,8 @@ public class ArquivoEvidenciaController {
     }
     
     @PostMapping("/{idEvidencia}")
-	public ArquivoResponseVO uploadFile(@RequestParam("file") MultipartFile file,@PathVariable int idEvidencia) {
-        return servises.uploadFile(file,idEvidencia);
+	public ArquivoResponseVO uploadFile(@RequestParam("descricao") String descricao,@RequestParam("file") MultipartFile file,@PathVariable int idEvidencia) {
+        return servises.uploadFile(file,idEvidencia,descricao);
     }
     
     @PatchMapping("/{id}/{descricao}")
@@ -62,6 +62,7 @@ public class ArquivoEvidenciaController {
 
     @DeleteMapping("/{id}")
     public void delet(@PathVariable int id) {
+        
        servises.delete(id); 
     }
 
