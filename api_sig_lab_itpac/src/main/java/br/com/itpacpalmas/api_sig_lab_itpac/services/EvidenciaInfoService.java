@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Agendamento;
+import br.com.itpacpalmas.api_sig_lab_itpac.entities.Aluno;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Aula;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.Disciplina;
 import br.com.itpacpalmas.api_sig_lab_itpac.entities.VO.EvidenciaInfo;
@@ -93,6 +94,19 @@ public class EvidenciaInfoService {
         aula.setId(evidencia.getId());
         Aula aulaSalva = repo.save(aula);
         return convertToInfo(aulaSalva);
+    }
+    public List<Aula> byPeriodo(int id) {
+        return repo.aulasByPeriodo(id);
+    }
+    public Double horasbyPeriodo(int id) {
+        List<Aula> aulasByPeriodo = repo.aulasByPeriodo(id);
+        Double horas = 0.0 ;
+        for (Aula a : aulasByPeriodo) {
+            if(a.getHorasAprendizagem() != null){
+                horas += a.getHorasAprendizagem();
+            }
+        }
+        return horas;
     }
 }
 
