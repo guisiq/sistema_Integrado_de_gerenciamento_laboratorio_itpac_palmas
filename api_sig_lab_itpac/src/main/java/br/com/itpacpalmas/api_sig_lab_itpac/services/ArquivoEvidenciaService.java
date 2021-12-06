@@ -99,7 +99,7 @@ public class ArquivoEvidenciaService {
     }
 
 
-	public ArquivoResponseVO uploadFile(MultipartFile file,int id) {
+	public ArquivoResponseVO uploadFile(MultipartFile file,int id,String descricao) {
 		Arquivo getArquivo = ArquivoRepo.save(new Arquivo());
 		String fileName = this.storeFile(file,getArquivo.getId(),id);
 		getArquivo.setCaminho(fileName);;
@@ -111,6 +111,8 @@ public class ArquivoEvidenciaService {
 		
 		ArquivoResponseVO retorno = new ArquivoResponseVO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
 		retorno.setId(getArquivo.getId());
+		retorno.setDescricao(descricao);
+		getArquivo.setDecricao(descricao);
 		getArquivo = ArquivoRepo.save(getArquivo);
 		Aula aula = aulaRepo.findById(id).get();
 		aula.getArquivos().add(getArquivo);
@@ -151,6 +153,7 @@ public class ArquivoEvidenciaService {
     }
 
 	public void delete(int id) {
+		ArquivoRepo.deletAulaArquivo(id);
 		ArquivoRepo.deleteById(id);
 	}
 

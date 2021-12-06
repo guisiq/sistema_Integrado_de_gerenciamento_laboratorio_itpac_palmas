@@ -27,6 +27,15 @@ public class PeriodoController {
 	@Autowired
     PeriodoRepository periodoRepository;
 
+    @GetMapping("getAll/{filtro}")
+public List<Periodo> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<Periodo> retorno = periodoRepository.findAll();
+    if (filtro) {
+        retorno.removeIf(p -> !p.getAtivo()); 
+    }
+    return retorno;
+}
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Periodo salvarItem(@RequestBody Periodo periodo) {

@@ -33,11 +33,27 @@ public class AgendamentoController {
     @Autowired
     AgendamentoRepository agendamentoRepository;
 
+    @GetMapping("getAll/{filtro}")
+    public List<Agendamento> getAll(@PathVariable (value = "filtro") String filtro){
+        List<Agendamento> retorno = agendamentoRepository.findAll();
+        if (filtro != null) {
+            retorno.removeIf(p -> {
+                if (p.getStatus() != null) {
+                    return !(p.getStatus().getDescricao().equals(filtro));
+                }
+                else{
+                    return true;
+                }
+            }); 
+        }
+        return retorno;
+    }
+
     @PostMapping("/professor")
     public ResponseEntity<?> cadastrarRecorenteProfessor(
         @RequestBody Agendamento agendamento,
-        @RequestParam(required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dataInicio,
-        @RequestParam(required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate datafim,
+        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicio,
+        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate datafim,
         @RequestParam(required = false) String dias) {
         
         if(dataInicio == null || datafim == null||dias==null){
@@ -113,8 +129,8 @@ public class AgendamentoController {
     @PostMapping("/tecnico")
     public ResponseEntity<?> cadastrarRecorente(
         @RequestBody Agendamento agendamento,
-        @RequestParam(required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dataInicio,
-        @RequestParam(required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate datafim,
+        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicio,
+        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate datafim,
         @RequestParam(required = false) String dias) {
 
 
@@ -193,6 +209,18 @@ public class AgendamentoController {
         try {
             Agendamento agendamento = agendamentoRepository.findById(id).get();
             agendamento.setAtivo(false);
+            agendamentoRepository.save(agendamento);
+            return ResponseEntity.status(HttpStatus.OK).body(agendamento);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+    @PatchMapping(value = "/ativar/{id}")
+    public ResponseEntity<Agendamento> ativar(@PathVariable(value = "id") Integer id) {
+        try {
+            Agendamento agendamento = agendamentoRepository.findById(id).get();
+            agendamento.setAtivo(true);
             agendamentoRepository.save(agendamento);
             return ResponseEntity.status(HttpStatus.OK).body(agendamento);
         } catch (Exception e) {

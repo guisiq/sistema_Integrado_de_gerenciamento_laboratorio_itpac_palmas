@@ -51,7 +51,7 @@ public class Disciplina {
     public Integer getId() {
         return id;
     }
-    public Boolean getAtivo() {
+    public Boolean isAtivo() {
         return ativo;
     }
     public void setAtivo(Boolean ativo) {

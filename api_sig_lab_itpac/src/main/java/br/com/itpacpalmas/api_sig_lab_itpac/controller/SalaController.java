@@ -29,6 +29,15 @@ public class SalaController {
     @Autowired
     SalaRepository salaRepository;
 
+    @GetMapping("getAll/{filtro}")
+public List<Sala> getAll(@PathVariable (value = "filtro") boolean filtro){
+    List<Sala> retorno = salaRepository.findAll();
+    if (filtro) {
+        retorno.removeIf(p -> !p.isAtivo()); 
+    }
+    return retorno;
+}
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Sala salvarItem(@RequestBody  Sala sala) {
