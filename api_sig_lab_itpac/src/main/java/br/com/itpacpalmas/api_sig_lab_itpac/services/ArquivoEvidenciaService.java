@@ -153,6 +153,7 @@ public class ArquivoEvidenciaService {
     }
 
 	public void delete(int id) {
+		ArquivoRepo.deletAulaArquivo(id);
 		ArquivoRepo.deleteById(id);
 	}
 

@@ -34,13 +34,20 @@ public class AgendamentoController {
     AgendamentoRepository agendamentoRepository;
 
     @GetMapping("getAll/{filtro}")
-public List<Agendamento> getAll(@PathVariable (value = "filtro") boolean filtro){
-    List<Agendamento> retorno = agendamentoRepository.findAll();
-    if (filtro) {
-        retorno.removeIf(p -> !p.getAtivo()); 
+    public List<Agendamento> getAll(@PathVariable (value = "filtro") String filtro){
+        List<Agendamento> retorno = agendamentoRepository.findAll();
+        if (filtro != null) {
+            retorno.removeIf(p -> {
+                if (p.getStatus() != null) {
+                    return !(p.getStatus().getDescricao().equals(filtro));
+                }
+                else{
+                    return true;
+                }
+            }); 
+        }
+        return retorno;
     }
-    return retorno;
-}
 
     @PostMapping("/professor")
     public ResponseEntity<?> cadastrarRecorenteProfessor(
