@@ -37,7 +37,7 @@ public class EvidenciaInfoService {
     }
     public EvidenciaInfo convertToInfo(Aula aula) {
         EvidenciaInfo info = new EvidenciaInfo();
-        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        //DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         info.setId(aula.getId());
         Agendamento agendamento = agendamentoRepository.findById(aula.getAgendamento().getId()).get();
         info.setData(agendamento.getData());
@@ -66,10 +66,16 @@ public class EvidenciaInfoService {
     }
     public List<EvidenciaInfo> ConvertList(List<Aula> aulas) {
         List<EvidenciaInfo> infos = new ArrayList<EvidenciaInfo>();
-        aulas.forEach(aula ->{
+        
+        System.out.println("linha 1");
+        for (Aula aula : aulas) {
             EvidenciaInfo info = convertToInfo(aula);
             infos.add(info);
-        });
+        }
+        // aulas.forEach(aula ->{
+        //     EvidenciaInfo info = convertToInfo(aula);
+        //     infos.add(info);
+        // });
         return infos;
     }
     public List<EvidenciaInfo> findAll(){

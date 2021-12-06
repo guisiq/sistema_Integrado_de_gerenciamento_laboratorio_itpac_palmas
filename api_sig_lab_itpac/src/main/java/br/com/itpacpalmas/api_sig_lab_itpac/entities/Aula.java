@@ -26,6 +26,7 @@ public class Aula{
     private Double horasAprendizagem;
     @ManyToOne
     @JoinColumn(name = "agendamento")
+    @Column(nullable = false)
     private Agendamento agendamento;
     @OneToMany
     @JoinTable(name="presenca",
