@@ -180,6 +180,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import { userKey } from "@/global";
 Vue.use(VueAxios, axios);
 
 var url = "http://api-sig-itpac-84633.herokuapp.com/api/subgrupo";
@@ -273,8 +274,16 @@ export default {
 
   methods: {
     async inicializar() {
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
       this.axios
-        .get(url + "/getAll/false", this.subgrupos)
+        .get(url + "/getAll/false", this.subgrupos,config)
         .then((res) => {
           console.log(res);
           this.subgrupos = res.data
@@ -302,7 +311,14 @@ export default {
       if (this.filtroSelecionado === "Todos") {
        this.inicializar();
       } else {
-        axios.get(url + "/getAll/true", this.subgrupos).then((res) => {
+        const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+        axios.get(url + "/getAll/true", this.subgrupos,config).then((res) => {
           this.subgrupos = res.data.map((p) => {
             p.ativo = p.ativo ? "Ativado" : "Desativado";
             return p;
@@ -313,14 +329,28 @@ export default {
     },
 
     async getProfessores() {
-      const { data } = await this.axios.get(urlProfessor+"/getAll/true");
+       const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+      const { data } = await this.axios.get(urlProfessor+"/getAll/true",config);
       this.profsRaw = data;
       this.professor = data.filter((d) => d.pessoa.nome);
       console.log(this.professor)
     },
 
     async getAlunos() {
-      const { data } = await this.axios.get(urlALuno+"/getAll/true");
+       const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+      const { data } = await this.axios.get(urlALuno+"/getAll/true",config);
       this.alunosRaw = data;
       this.alunos = data.filter((d) => d.pessoa.nome);
     },
@@ -329,7 +359,16 @@ export default {
       this.editIndice = this.subgrupos.indexOf(item);
       this.itemEditado = Object.assign({}, item);
       var id = this.itemEditado.id;
-      axios.get(url + "/" + id).then((res) => {
+
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
+      axios.get(url + "/" + id,config).then((res) => {
         this.itemEditado = res.data;
         this.alunosSelecionados = this.itemEditado.alunos.map(
           (d) => d.pessoa.nome
@@ -345,8 +384,15 @@ export default {
       this.itemEditado = Object.assign({}, item);
       var id = this.itemEditado.id;
 
-      // console.log(id,"elementoo");
-      axios.get(url + "/" + id).then((res) => {
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
+      axios.get(url + "/" + id, config).then((res) => {
         this.itemEditado = res.data;
         this.profSelecionado = this.itemEditado.professor;
         console.log("prof", this.profSelecionado);
@@ -366,10 +412,17 @@ export default {
 
     desativeItemConfirm() {
       this.inicializar();
-      // this.subgrupos.splice(this.editIndice, 1);
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
       if (this.itemEditado.ativo == "Ativado") {
         axios
-          .patch(url+"/desativar/" + this.itemEditado.id, {
+          .patch(url+"/desativar/" + this.itemEditado.id, config,{
             ativo: false,
           })
           .then((res) => {

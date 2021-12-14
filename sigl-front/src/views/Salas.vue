@@ -153,6 +153,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import { userKey } from "@/global";
 Vue.use(VueAxios, axios);
 
 var url = "http://api-sig-itpac-84633.herokuapp.com/api/sala";
@@ -220,7 +221,15 @@ export default {
 
   methods: {
     inicializar() {
-      this.axios.get(url + "/getAll/false", this.salas).then((res) => {
+       const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
+      this.axios.get(url + "/getAll/false", this.salas, config).then((res) => {
         this.salas = res.data.map((p) => {
           p.ativo = p.ativo ? "Ativado" : "Desativado";
           return p;
@@ -276,8 +285,16 @@ export default {
 
     desativeItemConfirm() {
       if (this.itemEditado.ativo == "Ativado") {
+         const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
         axios
-          .patch(url + "/desativar/" + this.itemEditado.id, {
+          .patch(url + "/desativar/" + this.itemEditado.id,config, {
             ativo: false,
           })
           .then((res) => {
@@ -291,7 +308,7 @@ export default {
           });
       } else {
         axios
-          .patch(url + "/ativar/" + this.itemEditado.id, {
+          .patch(url + "/ativar/" + this.itemEditado.id,config, {
             ativo: true,
           })
           .then((res) => {
@@ -336,8 +353,16 @@ export default {
 
     salvar() {
       if (this.editIndice > -1) {
+         const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
         axios
-          .put(url, {
+          .put(url,config, {
             id: this.itemEditado.id,
             nome: this.itemEditado.nome,
             local: this.itemEditado.local,
@@ -358,7 +383,7 @@ export default {
         Object.assign(this.salas[this.editIndice], this.itemEditado);
       } else {
         axios
-          .post(url, {
+          .post(url,config, {
             nome: this.itemEditado.nome,
             local: this.itemEditado.local,
             capacidade: this.itemEditado.capacidade,
