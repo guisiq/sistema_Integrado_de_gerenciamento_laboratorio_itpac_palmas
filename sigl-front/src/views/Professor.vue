@@ -173,6 +173,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import { userKey } from "@/global";
 Vue.use(VueAxios, axios);
 
 var url = "http://api-sig-itpac-84633.herokuapp.com/api/professores";
@@ -260,7 +261,15 @@ export default {
 
   methods: {
     inicializar() {
-      axios.get(url + "/getAll/false", this.professores).then((res) => {
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
+      axios.get(url + "/getAll/false", this.professores,config).then((res) => {
         this.professores = res.data.map((p) => {
           p.ativo = p.ativo ? "Ativado" : "Desativado";
           return p;
