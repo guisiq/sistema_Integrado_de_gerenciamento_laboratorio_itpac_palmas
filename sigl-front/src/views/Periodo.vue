@@ -118,8 +118,8 @@ body {
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import { baseApiUrl } from "@/global";
-// import { userKey } from "@/global";
+// import { baseApiUrl } from "@/global";
+import { userKey } from "@/global";
 Vue.use(VueAxios, axios);
 
 var url = "http://api-sig-itpac-84633.herokuapp.com/api/periodo";
@@ -194,23 +194,33 @@ export default {
 
   methods: {
     inicializar() {
-      //const json = localStorage.getItem(userKey)
-			// const jwt = JSON.parse(json)
-
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
       // const cabecalho = {
       //  headers: {
       //   'Authorization' : `Bearer ${jwt.token}`
-      //  } 
+      //  }
       // };
+      // document.cookie = `Bearer ${jwt.token}`};
 
-  
-      axios.get(baseApiUrl+"/api/periodo/getAll/false", this.periodos,).then((res) => {
-        this.periodos = res.data.map((p) => {
-          p.ativo = p.ativo ? "Ativado" : "Desativado";
-          return p;
-        });
-        console.log(res.data);
-      }).catch(console.warn("erro"));
+      // axios.get(baseApiUrl+"/api/periodo/getAll/false", this.periodos,).then((res) => {
+      //   this.periodos = res.data.map((p) => {
+      //     p.ativo = p.ativo ? "Ativado" : "Desativado";
+      //     return p;
+      //   });
+      //   console.log(res.data);
+      // }).catch(console.warn("erro"));
+      var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
+      axios.get(url+"/getAll/false", this.periodos, config).then((res) => {
+       this.periodos = res.data.map((p) => {
+       p.ativo = p.ativo ? "Ativado" : "Desativado";
+       return p;
+       }).catch(console.warn("erro no get"));
+      });
     },
 
     redefinirTable() {
