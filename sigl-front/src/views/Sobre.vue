@@ -26,7 +26,7 @@
                 Sendo assim, deve abranger os cursos disponíveis, relatórios e painéis de controle. Tendo como principal 
                 intuito o fornecimento das informações coletadas às organizações internacionais para que tenham ciência das ações realizadas no centro de simulação.
                 Partindo do exposto, foram designados os alunos do quarto período de Sistemas de Informação para desenvolver este sistema por intermédio da disciplina Projeto Integrador I
-                e orientação dos professores Frederico Pires e Fredson Costa.
+                e orientação dos professores Frederico Pires, Fredson Costa e Itamar Gonçalves.
             </p>
         </div>
        
