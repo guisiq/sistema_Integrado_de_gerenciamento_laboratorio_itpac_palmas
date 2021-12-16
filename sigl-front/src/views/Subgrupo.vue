@@ -481,14 +481,7 @@ export default {
       }
     },
     salvar() {
-     const json = localStorage.getItem(userKey);
-      const jwt = JSON.parse(json);
-      console.log(jwt.token);
-
-       var config = {
-        headers: { "Authorization": 'Bearer'+ jwt.token },
-      };
-
+      this.inicializar();
       if (this.editIndice > -1) {
         const request = {
           id: this.itemEditado.id,
@@ -500,7 +493,7 @@ export default {
         console.log("request", request);
 
         axios
-          .put(url, request,config)
+          .put(url, request)
           .then((res) => {
             console.log(res.data);
             alert("Os dados foram atualizados com sucesso !");
@@ -514,7 +507,7 @@ export default {
 
         Object.assign(this.subgrupos[this.editIndice], this.itemEditado);
       } else {
-        
+        this.inicializar();
         axios
           .post(url, {
             nome: this.itemEditado.nome,
