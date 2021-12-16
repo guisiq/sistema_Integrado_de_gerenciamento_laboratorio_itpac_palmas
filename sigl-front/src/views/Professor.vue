@@ -388,9 +388,17 @@ export default {
     },
 
     salvar() {
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": 'Bearer'+ jwt.token },
+      };
+
       if (this.editIndice > -1) {
         axios
-          .put(url, {
+          .put(url,config {
             id: this.itemEditado.id,
             pessoa: {
               id: this.itemEditado.pessoa.id,
@@ -414,7 +422,7 @@ export default {
         Object.assign(this.professores[this.editIndice], this.itemEditado);
       } else {
         axios
-          .post(url, {
+          .post(url,config {
             pessoa: {
               nome: this.itemEditado.pessoa.nome,
               cpf: this.itemEditado.pessoa.cpf,
