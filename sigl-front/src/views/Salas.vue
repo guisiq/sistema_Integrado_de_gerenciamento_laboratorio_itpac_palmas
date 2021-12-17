@@ -221,12 +221,12 @@ export default {
 
   methods: {
     inicializar() {
-       const json = localStorage.getItem(userKey);
+      const json = localStorage.getItem(userKey);
       const jwt = JSON.parse(json);
       console.log(jwt.token);
 
        var config = {
-        headers: { "Authorization": 'Bearer'+ jwt.token },
+        headers: { "Authorization": ' bearer '+ jwt.token },
       };
 
       this.axios.get(url + "/getAll/false", this.salas, config).then((res) => {
@@ -242,7 +242,16 @@ export default {
       if (this.filtroSelecionado === "Todos") {
         this.inicializar();
       } else {
-        axios.get(url + "/getAll/true", this.salas).then((res) => {
+      
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": ' bearer '+ jwt.token },
+      };
+
+        axios.get(url + "/getAll/true", this.salas,config).then((res) => {
           this.salas = res.data.map((p) => {
             p.ativo = p.ativo ? "Ativado" : "Desativado";
             return p;
@@ -353,12 +362,13 @@ export default {
 
     salvar() {
       if (this.editIndice > -1) {
-         const json = localStorage.getItem(userKey);
+
+      const json = localStorage.getItem(userKey);
       const jwt = JSON.parse(json);
       console.log(jwt.token);
 
        var config = {
-        headers: { "Authorization": 'Bearer'+ jwt.token },
+        headers: { "Authorization": ' bearer '+ jwt.token },
       };
 
         axios

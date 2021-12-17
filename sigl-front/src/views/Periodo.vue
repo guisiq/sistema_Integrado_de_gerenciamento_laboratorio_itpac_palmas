@@ -123,10 +123,8 @@ import { userKey } from "@/global";
 Vue.use(VueAxios, axios);
 
 var url = "https://api-sig-itpac-84633.herokuapp.com/api/periodo";
-var urlPatch =
-  "https://api-sig-itpac-84633.herokuapp.com/api/periodo/desativar/";
-var urlDispatch =
-  "https://api-sig-itpac-84633.herokuapp.com/api/periodo/ativar/";
+var urlPatch ="https://api-sig-itpac-84633.herokuapp.com/api/periodo/desativar/";
+var urlDispatch ="https://api-sig-itpac-84633.herokuapp.com/api/periodo/ativar/";
 
 export default {
   data: () => ({
@@ -212,7 +210,7 @@ export default {
       //   console.log(res.data);
       // }).catch(console.warn("erro"));
       var config = {
-        headers: { "Authorization": 'Bearer'+ jwt.token },
+        headers: { "Authorization": ' bearer '+ jwt.token },
       };
 
       axios.get(url+"/getAll/false", this.periodos, config).then((res) => {
@@ -227,7 +225,15 @@ export default {
       if (this.filtroSelecionado === "Todos") {
         this.inicializar();
       } else {
-        axios.get(url + "/getAll/true", this.periodos).then((res) => {
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": ' bearer '+ jwt.token },
+      };
+
+      axios.get(url + "/getAll/true", this.periodos,config).then((res) => {
           this.periodos = res.data.map((p) => {
             p.ativo = p.ativo ? "Ativado" : "Desativado";
             return p;
@@ -266,9 +272,17 @@ export default {
     },
 
     desativeItemConfirm() {
+        const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": ' bearer '+ jwt.token },
+      };
+
       if (this.itemEditado.ativo == "Ativado") {
         axios
-          .patch(urlPatch + this.itemEditado.id, {
+          .patch(urlPatch + this.itemEditado.id,config, {
             id: this.itemEditado.id,
             // dataCadastro: this.itemEditado.dataCadastro,
             ativo: false,
@@ -283,7 +297,7 @@ export default {
           });
       } else {
         axios
-          .patch(urlDispatch + this.itemEditado.id, {
+          .patch(urlDispatch + this.itemEditado.id,config, {
             ativo: true,
           })
           .then((res) => {
@@ -316,8 +330,17 @@ export default {
 
     salvar() {
       if (this.editIndice > -1) {
+      
+      const json = localStorage.getItem(userKey);
+      const jwt = JSON.parse(json);
+      console.log(jwt.token);
+
+       var config = {
+        headers: { "Authorization": ' bearer '+ jwt.token },
+      };
+
         axios
-          .put(url, {
+          .put(url,config, {
             id: this.itemEditado.id,
             periodo: this.itemEditado.periodo,
             ativo: this.itemEditado.ativo === "Ativado",
@@ -330,7 +353,7 @@ export default {
         Object.assign(this.periodos[this.editIndice], this.itemEditado);
       } else {
         axios
-          .post(url, {
+          .post(url,config, {
             periodo: this.itemEditado.periodo,
             ativo: true,
           })
