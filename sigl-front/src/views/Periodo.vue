@@ -122,11 +122,11 @@ import VueAxios from "vue-axios";
 import { userKey } from "@/global";
 Vue.use(VueAxios, axios);
 
-var url = "http://api-sig-itpac-84633.herokuapp.com/api/periodo";
+var url = "https://api-sig-itpac-84633.herokuapp.com/api/periodo";
 var urlPatch =
-  "http://api-sig-itpac-84633.herokuapp.com/api/periodo/desativar/";
+  "https://api-sig-itpac-84633.herokuapp.com/api/periodo/desativar/";
 var urlDispatch =
-  "http://api-sig-itpac-84633.herokuapp.com/api/periodo/ativar/";
+  "https://api-sig-itpac-84633.herokuapp.com/api/periodo/ativar/";
 
 export default {
   data: () => ({

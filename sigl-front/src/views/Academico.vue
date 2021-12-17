@@ -178,9 +178,9 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
-var url = "http://api-sig-itpac-84633.herokuapp.com/api/aluno";
-var urlPatch = "http://api-sig-itpac-84633.herokuapp.com/api/aluno/desativar/";
-var urlDispatch = "http://api-sig-itpac-84633.herokuapp.com/api/aluno/Ativar/";
+var url = "https://api-sig-itpac-84633.herokuapp.com/api/aluno";
+var urlPatch = "https://api-sig-itpac-84633.herokuapp.com/api/aluno/desativar/";
+var urlDispatch = "https://api-sig-itpac-84633.herokuapp.com/api/aluno/Ativar/";
 
 export default {
   data: () => ({

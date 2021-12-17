@@ -156,7 +156,7 @@ import VueAxios from "vue-axios";
 import { userKey } from "@/global";
 Vue.use(VueAxios, axios);
 
-var url = "http://api-sig-itpac-84633.herokuapp.com/api/sala";
+var url = "https://api-sig-itpac-84633.herokuapp.com/api/sala";
 // var urlPatch = "http://api-sig-itpac-84633.herokuapp.com/api/sala/desativar/";
 // var urlDispatch = "http://api-sig-itpac-84633.herokuapp.com/api/sala/ativar/";
 

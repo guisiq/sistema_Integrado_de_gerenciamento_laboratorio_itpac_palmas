@@ -178,7 +178,7 @@ export default {
     enviarEmail() {
       this.axios
         .get(
-          "http://api-sig-itpac-84633.herokuapp.com/api/forgotpass?email=" +
+          "https://api-sig-itpac-84633.herokuapp.com/api/forgotpass?email=" +
             this.email
         )
         .then((res) => {
@@ -193,7 +193,7 @@ export default {
 
     novaSenha(){
       this.axios
-        .get("http://api-sig-itpac-84633.herokuapp.com/api/forgotpass/alterpass?senha=" + this.senhaNova + "&codigo=" + this.codigo,{
+        .get("https://api-sig-itpac-84633.herokuapp.com/api/forgotpass/alterpass?senha=" + this.senhaNova + "&codigo=" + this.codigo,{
           // codigo: this.codigo,
           // senhaNova: this.senhaNova,
         }

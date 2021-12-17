@@ -172,11 +172,11 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
-var url = "http://api-sig-itpac-84633.herokuapp.com/api/usuario";
+var url = "https://api-sig-itpac-84633.herokuapp.com/api/usuario";
 var urlPatch =
-  "http://api-sig-itpac-84633.herokuapp.com/api/usuario/desativar/";
+  "https://api-sig-itpac-84633.herokuapp.com/api/usuario/desativar/";
 var urlDispatch =
-  "http://api-sig-itpac-84633.herokuapp.com/api/usuario/ativar/";
+  "https://api-sig-itpac-84633.herokuapp.com/api/usuario/ativar/";
 
 export default {
   data: () => ({

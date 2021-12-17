@@ -163,7 +163,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
-var url = "http://api-sig-itpac-84633.herokuapp.com/api/manual";
+var url = "https://api-sig-itpac-84633.herokuapp.com/api/manual";
 
 export default {
   data: () => ({
