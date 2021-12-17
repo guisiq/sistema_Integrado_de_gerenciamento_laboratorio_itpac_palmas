@@ -365,8 +365,6 @@ export default {
       axios.get(url + "/presenca/" + id).then((res) => {
         this.listaAlunos = res.data;
         this.listapresenca = this.listaAlunos.listaAluno;
-        console.log(this.listaAlunos, "aoba");
-        console.log(this.listapresenca, "che che");
       });
     },
 
